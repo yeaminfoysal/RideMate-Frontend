@@ -1,5 +1,6 @@
 import { Navbar1 } from "@/components/layout/Navbar";
 import AboutSection from "@/modules/HomePage/AboutSection";
+import BlogSection from "@/modules/HomePage/BlogSection";
 import CustomerReviews from "@/modules/HomePage/CastumerReviewsSection";
 import DownloadApp from "@/modules/HomePage/DownloadAppSection";
 import { Hero1 } from "@/modules/HomePage/Hero";
@@ -15,6 +16,7 @@ export default function HomePage() {
             <WhatWeOffer />
             <AboutSection/>
             <DownloadApp/>
+            <BlogSection/>
             <CustomerReviews/>
         </div>
     )
