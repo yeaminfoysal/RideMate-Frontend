@@ -1,13 +1,15 @@
 
 import { Navbar1 } from './components/layout/Navbar'
-import { Button } from './components/ui/button'
+import { Hero1 } from './modules/HomePage/Hero'
 
 function App() {
 
   return (
     <>
-      <Navbar1 />
-      <Button>Hello world</Button>
+      <div id='hero' className='min-h-screen '>
+        <Navbar1 />
+        <Hero1/>
+      </div>
     </>
   )
 }
