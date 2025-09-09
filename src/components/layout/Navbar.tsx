@@ -23,6 +23,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "./theme-toggole";
+import { Link } from "react-router";
 
 interface MenuItem {
     title: string;
@@ -98,8 +99,8 @@ const Navbar1 = ({
         }
     ],
     auth = {
-        login: { title: "Login", url: "#" },
-        signup: { title: "Sign up", url: "#" },
+        login: { title: "Login", url: "/login" },
+        signup: { title: "Sign up", url: "/login" },
     },
 }: Navbar1Props) => {
     return (
@@ -171,10 +172,10 @@ const Navbar1 = ({
 
                                     <div className="flex flex-col gap-3">
                                         <Button asChild variant="outline">
-                                            <a href={auth.login.url}>{auth.login.title}</a>
+                                            <Link to={auth.login.url}>{auth.login.title}</Link>
                                         </Button>
                                         <Button asChild>
-                                            <a href={auth.signup.url}>{auth.signup.title}</a>
+                                            <Link to={auth.signup.url}>{auth.signup.title}</Link>
                                         </Button>
                                     </div>
                                 </div>
