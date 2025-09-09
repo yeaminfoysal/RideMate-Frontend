@@ -1,7 +1,13 @@
 import App from "@/App";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/Login";
-import { createBrowserRouter } from "react-router";
+import Unauthorized from "@/pages/Unauthorized";
+import { generateRoutes } from "@/utils/generateRoute";
+import { role } from "@/utils/getSidebarItems";
+import { withAuth } from "@/utils/withAuth";
+import { createBrowserRouter, Navigate } from "react-router";
+import { userSidebarItems } from "./userSidebarItems";
 
 export const router = createBrowserRouter([
     {
@@ -18,4 +24,23 @@ export const router = createBrowserRouter([
         path: "/login",
         Component: LoginPage
     },
+    {
+        path: "/user",
+        Component: DashboardLayout
+    },
+    {
+        path: "/unauthorized",
+        Component: Unauthorized
+    },
+    {
+        path: "/user",
+        Component: withAuth(DashboardLayout, role.user),
+        children: [
+            {
+                index: true,
+                element: <Navigate to={"/user/ride-book"} />
+            },
+            ...generateRoutes(userSidebarItems)
+        ]
+    }
 ]);
