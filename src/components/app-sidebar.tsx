@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sidebar"
 import { useUserInfoQuery } from "@/redux/features/auth/authApi"
 import { getSidebarItems } from "@/utils/getSidebarItems";
+import { Link } from "react-router";
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -37,7 +38,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild >
-                      <a href={item.url}>{item.title}</a>
+                      <Link to={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}

@@ -135,6 +135,7 @@ const Navbar1 = ({
                     </div>
                     <div className="flex gap-2 items-center">
                         <ModeToggle />
+                        
                         {data?.data?.email && (
                             <Button
                                 onClick={handleLogout}
@@ -144,6 +145,7 @@ const Navbar1 = ({
                                 Logout
                             </Button>
                         )}
+
                         {!data?.data?.email && (
                             <Button asChild className="text-sm">
                                 <Link to="/login">Login</Link>
@@ -175,6 +177,8 @@ const Navbar1 = ({
                                     </Accordion>
 
                                     <div className="flex flex-col gap-3">
+                                        <ModeToggle />
+
                                         {data?.data?.email && (
                                             <Button
                                                 onClick={handleLogout}
@@ -184,6 +188,7 @@ const Navbar1 = ({
                                                 Logout
                                             </Button>
                                         )}
+
                                         {!data?.data?.email && (
                                             <Button asChild className="text-sm">
                                                 <Link to="/login">Login</Link>
