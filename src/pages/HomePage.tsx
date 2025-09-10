@@ -1,4 +1,4 @@
-import { Navbar1 } from "@/components/layout/Navbar1";
+// import { Navbar1 } from "@/components/layout/Navbar1";
 import AboutSection from "@/modules/HomePage/AboutSection";
 import BlogSection from "@/modules/HomePage/BlogSection";
 import { BookingForm } from "@/modules/HomePage/BookingForm";
@@ -11,7 +11,7 @@ export default function HomePage() {
     return (
         <div>
             <div id="hero">
-                <Navbar1 />
+                {/* <Navbar1 /> */}
                 <Hero1 />
             </div>
             <div className="relative mb-80">

@@ -8,6 +8,7 @@ import { role } from "@/utils/getSidebarItems";
 import { withAuth } from "@/utils/withAuth";
 import { createBrowserRouter, Navigate } from "react-router";
 import { userSidebarItems } from "./userSidebarItems";
+import AboutPage from "@/pages/AboutPage";
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
             {
                 Component: HomePage,
                 index: true
+            },
+            {
+                Component: AboutPage,
+                path: "/about",
             }
         ]
     },

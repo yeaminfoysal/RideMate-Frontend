@@ -1,12 +1,13 @@
 
 import { Button } from "@/components/ui/button"
-import LocationInput from "@/pages/User/LocationInputForm"
+import LocationInput from "@/modules/User/LocationInputForm"
 import { useAppDispatch } from "@/redux/hook"
 import { setDestination, setPickup } from "@/redux/features/ride/rideSlice"
 import { useNavigate } from "react-router";
 
 
 export function BookingForm() {
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
     const handleSubmit = () => {

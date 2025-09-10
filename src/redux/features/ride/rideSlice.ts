@@ -16,14 +16,14 @@ const initialState: RideState = {
   destination: null,
 };
 
-export const rideSlice = createSlice({
+const rideSlice = createSlice({
   name: "ride",
   initialState,
   reducers: {
-    setPickup: (state, action: PayloadAction<Location | null>) => {
+    setPickup: (state, action: PayloadAction<Location>) => {
       state.pickup = action.payload;
     },
-    setDestination: (state, action: PayloadAction<Location | null>) => {
+    setDestination: (state, action: PayloadAction<Location>) => {
       state.destination = action.payload;
     },
     resetRide: (state) => {
@@ -34,5 +34,4 @@ export const rideSlice = createSlice({
 });
 
 export const { setPickup, setDestination, resetRide } = rideSlice.actions;
-
 export default rideSlice.reducer;

@@ -53,6 +53,7 @@ interface Navbar1Props {
 const Navbar1 = ({
     menu = [
         { title: "Home", url: "/", role: "PUBLIC" },
+        { title: "About", url: "/about", role: "PUBLIC" },
         { title: "Dashboard", url: "/user", role: "USER" },
         {
             title: "Products",
@@ -117,7 +118,7 @@ const Navbar1 = ({
 
     return (
         <section className="pt-4">
-            <div className="container mx-auto border border-black rounded-2xl bg-background px-4 py-2">
+            <div className="container mx-auto border border-foreground/20 rounded-2xl bg-background px-4 py-2">
                 {/* Desktop Menu */}
                 <nav className="hidden justify-between lg:flex">
                     <div className="flex items-center gap-6">

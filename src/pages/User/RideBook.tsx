@@ -1,5 +1,5 @@
-import RideMap from "./RideMap";
-import LocationInput from "./LocationInputForm";
+import RideMap from "../../modules/User/RideMap";
+import LocationInput from "../../modules/User/LocationInputForm";
 import { useRequestRideMutation } from "@/redux/features/ride/rideApi";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
