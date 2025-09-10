@@ -18,7 +18,7 @@ const featuresRight = [
 
 const AboutSection: React.FC = () => {
     return (
-        <section className="py-16 bg-background mt-20">
+        <section className="py-16 bg-background my-20">
             <div className="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Left Content */}
                 <div>

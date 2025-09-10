@@ -7,7 +7,7 @@ export default function WhatWeOffer() {
             <h2 className="text-[50px] font-semibold text-center">We Offer The Best For You</h2>
 
             <p className="text-center max-w-[700px] mx-auto mt-[10px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero condimentum metus.</p>
-            <div className="mt-[50px] flex items-center justify-between gap-[20px]">
+            <div className="mt-[50px] flex items-center justify-between gap-[20px] px-20">
 
                 <WeOfferCard
                     title="Support All Payment"
