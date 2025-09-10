@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import mbxClient from "@mapbox/mapbox-sdk";
 import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding";
 
@@ -9,21 +9,30 @@ const geocodingClient = mbxGeocoding(baseClient);
 interface LocationInputProps {
   label: string;
   onSelect: (place: { name: string; lat: number; lng: number }) => void;
+  value?: { name: string; lat: number; lng: number } | null; // default value from redux
 }
 
-const LocationInput: React.FC<LocationInputProps> = ({ label, onSelect }) => {
+const LocationInput: React.FC<LocationInputProps> = ({ label, onSelect, value }) => {
   const [query, setQuery] = useState("");
+
   const [suggestions, setSuggestions] = useState<any[]>([]);
 
-  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
+  // ✅ Sync redux value to input field
+  useEffect(() => {
+    if (value?.name) {
+      setQuery(value.name);
+    }
+  }, [value]);
 
-    if (value.length > 2) {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setQuery(val);
+
+    if (val.length > 2) {
       try {
         const response = await geocodingClient
           .forwardGeocode({
-            query: value,
+            query: val,
             autocomplete: true,
             limit: 5,
           })
