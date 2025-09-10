@@ -68,7 +68,7 @@ const CustomerReviews: React.FC = () => {
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="bg-white text-gray-700 rounded-2xl shadow-lg p-6 md:p-8 flex-1 transform translate-y-20"
+            className="bg-background dark:bg-[#131313] rounded-2xl shadow-lg p-6 md:p-8 flex-1 transform translate-y-20"
           >
             <div className="flex items-center justify-center">
               <img
@@ -80,9 +80,9 @@ const CustomerReviews: React.FC = () => {
             <p className="text-yellow-500 text-5xl leading-none text-center my-4">
               &quot;
             </p>
-            <p className="text-sm text-gray-600 text-center">{review.review}</p>
+            <p className="text-sm  text-center">{review.review}</p>
             <div className="mt-6 text-center">
-              <h4 className="font-bold text-gray-900">{review.name}</h4>
+              <h4 className="font-bold ">{review.name}</h4>
               <p className="text-yellow-500 text-sm">{review.role}</p>
             </div>
           </div>

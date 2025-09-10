@@ -11,16 +11,16 @@ interface BlogCardProps {
 // Reusable Card Component
 const BlogCard: React.FC<BlogCardProps> = ({ title, description, image, tag }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+    <div className="bg-background dark:bg-[#131313] rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
       <div className="relative">
         <img src={image} alt={title} className="w-full h-56 object-cover rounded-t-2xl" />
-        <span className="absolute top-3 left-3 bg-yellow-500 text-black text-sm font-medium px-3 py-1 rounded-md">
+        <span className="absolute top-3 left-3 bg-yellow-500  text-sm font-medium px-3 py-1 rounded-md">
           {tag}
         </span>
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-bold text-gray-900">{title}</h3>
-        <p className="mt-2 text-sm text-gray-600">{description}</p>
+        <h3 className="text-lg font-bold ">{title}</h3>
+        <p className="mt-2 text-sm ">{description}</p>
       </div>
     </div>
   );
@@ -61,7 +61,7 @@ const BlogSection: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
         <div>
           <p className="text-primary font-medium">Our News</p>
-          <h2 className="text-[50px] font-semibold text-gray-900">
+          <h2 className="text-[50px] font-semibold">
             Blog & <span className="text-primary">Articles.</span>
           </h2>
         </div>

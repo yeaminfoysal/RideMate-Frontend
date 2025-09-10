@@ -37,7 +37,7 @@ export function BookingForm() {
     }
 
     return (
-        <div className="w-[824px] mx-auto bg-background p-8 rounded-2xl shadow-xl">
+        <div className="w-[824px] mx-auto bg-background dark:bg-[#131313] p-8 rounded-2xl shadow-xl">
             <h2 className="text-3xl font-bold mb-8 text-center">🚖 Book Your Ride</h2>
 
             <Form {...form}>
@@ -53,7 +53,7 @@ export function BookingForm() {
                                 <FormControl>
                                     <Input
                                         placeholder="Enter pickup location"
-                                        className="h-12 text-lg"
+                                        className=""
                                         {...field}
                                     />
                                 </FormControl>
@@ -72,7 +72,7 @@ export function BookingForm() {
                                 <FormControl>
                                     <Input
                                         placeholder="Enter destination"
-                                        className="h-12 text-lg"
+                                        className=" "
                                         {...field}
                                     />
                                 </FormControl>
@@ -83,7 +83,7 @@ export function BookingForm() {
 
                     <Button
                         type="submit"
-                        className="w-full h-12 rounded-lg font-semibold text-lg"
+                        className="w-full rounded-lg font-semibold "
                     >
                         Confirm Booking
                     </Button>
