@@ -10,6 +10,7 @@ import { createBrowserRouter, Navigate } from "react-router";
 import { userSidebarItems } from "./userSidebarItems";
 import AboutPage from "@/pages/AboutPage";
 import FeaturesPage from "@/pages/FeaturesPage";
+import ContactPage from "@/pages/ContactPage";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {
                 Component: FeaturesPage,
                 path: "/features",
+            },
+            {
+                Component: ContactPage,
+                path: "/contact",
             }
         ]
     },

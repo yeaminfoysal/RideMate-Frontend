@@ -55,6 +55,7 @@ const Navbar1 = ({
         { title: "Home", url: "/", role: "PUBLIC" },
         { title: "About", url: "/about", role: "PUBLIC" },
         { title: "Features", url: "/features", role: "PUBLIC" },
+        { title: "Contact", url: "/contact", role: "PUBLIC" },
         { title: "Dashboard", url: "/user", role: "USER" },
         {
             title: "Products",
