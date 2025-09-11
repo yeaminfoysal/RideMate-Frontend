@@ -54,6 +54,7 @@ const Navbar1 = ({
     menu = [
         { title: "Home", url: "/", role: "PUBLIC" },
         { title: "About", url: "/about", role: "PUBLIC" },
+        { title: "Features", url: "/features", role: "PUBLIC" },
         { title: "Dashboard", url: "/user", role: "USER" },
         {
             title: "Products",
@@ -118,7 +119,7 @@ const Navbar1 = ({
 
     return (
         <section className="pt-4">
-            <div className="container mx-auto border-2 border-foreground/10 rounded-2xl bg-background px-4 py-3">
+            <div className="container mx-auto border-2 rounded-2xl bg-background px-4 py-3 border-primary/30">
                 {/* Desktop Menu */}
                 <nav className="hidden justify-between lg:flex">
                     <div className="flex items-center gap-6">

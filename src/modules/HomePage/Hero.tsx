@@ -76,7 +76,7 @@ const Hero1 = () => {
                         <img
                             src={hero1}
                             alt={"Hero 1"}
-                            className="max-h-[505px] rounded-md  relative"
+                            className="max-h-[505px] rounded-md  relative  animate-[float_3s_ease-in-out_infinite]"
                         />
                     </div>
                 </div>

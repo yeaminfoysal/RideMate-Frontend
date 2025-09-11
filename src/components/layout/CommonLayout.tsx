@@ -13,7 +13,6 @@ export default function CommonLayout({ children }: IProps) {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            console.log(currentScrollY)
 
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 // scrolling down
