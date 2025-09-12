@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import mbxClient from "@mapbox/mapbox-sdk";
 import mbxGeocoding from "@mapbox/mapbox-sdk/services/geocoding";
+import { Input } from "@/components/ui/input";
 
 const baseClient = mbxClient({ accessToken: import.meta.env.VITE_MAPBOX_TOKEN });
 const geocodingClient = mbxGeocoding(baseClient);
@@ -60,7 +61,7 @@ const LocationInput: React.FC<LocationInputProps> = ({ label, onSelect, value })
   return (
     <div className="relative w-full">
       <label className="block font-semibold mb-1">{label}</label>
-      <input
+      <Input
         type="text"
         value={query}
         onChange={handleChange}

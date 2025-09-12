@@ -18,17 +18,19 @@ export function BookingForm() {
         <div className="w-[824px] mx-auto bg-background dark:bg-[#131313] p-8 rounded-2xl shadow-xl">
             <h2 className="text-3xl font-bold mb-8 text-center">🚖 Book Your Ride</h2>
 
-            {/* Pickup Field */}
-            <LocationInput
-                label="Pickup Location"
-                onSelect={(loc) => dispatch(setPickup(loc))}
-            />
+            <div className="space-y-3">
+                {/* Pickup Field */}
+                <LocationInput
+                    label="Pickup Location"
+                    onSelect={(loc) => dispatch(setPickup(loc))}
+                />
 
-            {/* Destination Field */}
-            <LocationInput
-                label="Destination Location"
-                onSelect={(loc) => dispatch(setDestination(loc))}
-            />
+                {/* Destination Field */}
+                <LocationInput
+                    label="Destination Location"
+                    onSelect={(loc) => dispatch(setDestination(loc))}
+                />
+            </div>
 
             <Button
                 onClick={handleSubmit}

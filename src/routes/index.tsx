@@ -11,6 +11,7 @@ import { userSidebarItems } from "./userSidebarItems";
 import AboutPage from "@/pages/AboutPage";
 import FeaturesPage from "@/pages/FeaturesPage";
 import ContactPage from "@/pages/ContactPage";
+import FaqPage from "@/pages/FAQPage";
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
             {
                 Component: ContactPage,
                 path: "/contact",
+            },
+            {
+                Component: FaqPage,
+                path: "/faq",
             }
         ]
     },

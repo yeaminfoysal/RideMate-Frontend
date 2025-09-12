@@ -51,7 +51,7 @@ export function ContactSection() {
                 {/* Left Info */}
                 <div className="space-y-6">
                     <h2 className="text-[50px] font-semibold">
-                        Get in <span className="text-yellow-500">Touch.</span>
+                        Get in <span className="text-primary">Touch.</span>
                     </h2>
                     <p className="text-muted-foreground">
                         Lorem ipsum dolor sit amet consectetuer adipiscing elit. Aenean commodo ligula eget dolor. dolor sit amet consectetuer adipiscing elit.
@@ -59,7 +59,7 @@ export function ContactSection() {
 
                     <div className="space-y-8">
                         <div className="flex items-center gap-4">
-                            <div className="p-5 rounded-xl bg-foreground text-yellow-500">
+                            <div className="p-5 rounded-xl bg-foreground text-primary">
                                 <MapPin size={34} />
                             </div>
                             <div>
@@ -71,7 +71,7 @@ export function ContactSection() {
                         </div>
 
                         <div className="flex items-center gap-4">
-                            <div className="p-5 rounded-xl bg-yellow-500 text-foreground">
+                            <div className="p-5 rounded-xl bg-primary text-black">
                                 <Phone size={35} />
                             </div>
                             <div>
@@ -83,7 +83,7 @@ export function ContactSection() {
                         </div>
 
                         <div className="flex items-center gap-4">
-                            <div className="p-5 rounded-xl bg-white shadow text-yellow-500">
+                            <div className="p-5 rounded-xl bg-background shadow text-primary">
                                 <Mail size={35} />
                             </div>
                             <div>
@@ -99,16 +99,16 @@ export function ContactSection() {
                     <div className="pt-4 flex  items-center justify-between">
                         <h3 className="font-semibold">Social Media:</h3>
                         <div className="flex gap-3 mt-2">
-                            <Button size="icon" className="bg-yellow-500 hover:bg-yellow-600 text-foreground rounded-md">
+                            <Button size="icon" className="bg-primary hover:bg-yellow-600  rounded-md">
                                 f
                             </Button>
-                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-white rounded-md">
+                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-background rounded-md">
                                 x
                             </Button>
-                            <Button size="icon" className="bg-green-500 hover:bg-green-600 text-white rounded-md">
+                            <Button size="icon" className="bg-primary hover:bg-yellow-600 text-background rounded-md">
                                 w
                             </Button>
-                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-white rounded-md">
+                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-background rounded-md">
                                 in
                             </Button>
                         </div>
@@ -116,7 +116,7 @@ export function ContactSection() {
                 </div>
 
                 {/* Right Form */}
-                <div className="bg-white shadow-xl rounded-2xl p-12">
+                <div className="bg-background shadow-xl rounded-2xl p-12">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -176,7 +176,7 @@ export function ContactSection() {
                                 )}
                             />
 
-                            <Button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-foreground">
+                            <Button type="submit" className="w-full bg-primary  text-foreground">
                                 Send Message
                             </Button>
                         </form>
