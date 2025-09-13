@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import {
   Sidebar,
   SidebarContent,
@@ -13,23 +12,45 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { useUserInfoQuery } from "@/redux/features/auth/authApi"
+// import { useGetDriverInfoQuery, useSetAvailabilityMutation } from "@/redux/features/driver/driverApi"
 import { getSidebarItems } from "@/utils/getSidebarItems";
 import { Link } from "react-router";
-
+import { Switch } from "@/components/ui/switch"  // shadcn switch
+import { useGetDriverStatusQuery, useSetAvailablityMutation } from "@/redux/features/driver/driverApi";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userInfo } = useUserInfoQuery(undefined);
+  const { data: driverInfo } = useGetDriverStatusQuery(undefined, {
+    skip: userInfo?.data?.role !== "DRIVER",
+  });
+
+  const [setAvailability] = useSetAvailablityMutation();
+
+  const isDriver = userInfo?.data?.role === "DRIVER";
+  const isOnline = driverInfo?.data?.isOnline ?? false;
+
+  const handleToggle = async (checked: boolean) => {
+    await setAvailability({ isOnline: checked });
+  };
 
   const data = {
     navMain: getSidebarItems(userInfo?.data?.role),
-  }
+  };
 
   return (
     <Sidebar {...props}>
       <SidebarHeader>
+        {isDriver && (
+          <div className="flex items-center justify-between p-2">
+            <span className="text-sm font-medium">Online</span>
+            <Switch
+              checked={isOnline}
+              onCheckedChange={handleToggle}
+            />
+          </div>
+        )}
       </SidebarHeader>
       <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
@@ -37,7 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild >
+                    <SidebarMenuButton asChild>
                       <Link to={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

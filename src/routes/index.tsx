@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Navigate to={"/driver/ride-requests"} />
+                element: <Navigate to={"/driver/incoming-request"} />
             },
             ...generateRoutes(driverSidebarItems)
         ]
