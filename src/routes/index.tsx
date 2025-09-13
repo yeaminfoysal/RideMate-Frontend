@@ -14,6 +14,7 @@ import ContactPage from "@/pages/ContactPage";
 import FaqPage from "@/pages/FAQPage";
 import RegistrationPage from "@/pages/Registration";
 import AccountStatusPage from "@/pages/AccountStatusPage";
+import { driverSidebarItems } from "./driverSidebarItems";
 
 export const router = createBrowserRouter([
     {
@@ -72,5 +73,16 @@ export const router = createBrowserRouter([
             },
             ...generateRoutes(userSidebarItems)
         ]
-    }
+    },
+    {
+        path: "/driver",
+        Component: withAuth(DashboardLayout, role.driver),
+        children: [
+            {
+                index: true,
+                element: <Navigate to={"/driver/ride-requests"} />
+            },
+            ...generateRoutes(driverSidebarItems)
+        ]
+    },
 ]);

@@ -30,7 +30,7 @@ import { useAppDispatch } from "@/redux/hook";
 interface MenuItem {
     title: string;
     url: string;
-    role?: "PUBLIC" | "ADMIN" | "USER"
+    role?: "PUBLIC" | "ADMIN" | "USER" | "DRIVER"
     description?: string;
     icon?: React.ReactNode;
     items?: MenuItem[];
@@ -58,6 +58,7 @@ const Navbar1 = ({
         { title: "FAQ", url: "/faq", role: "PUBLIC" },
         { title: "Contact", url: "/contact", role: "PUBLIC" },
         { title: "Dashboard", url: "/user", role: "USER" },
+        { title: "Dashboard", url: "/driver", role: "DRIVER" },
         {
             title: "Products",
             url: "#",

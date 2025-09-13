@@ -2,8 +2,8 @@ import { baseApi } from "@/redux/baseApi";
 
 export const rideApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getPokemonByName: build.query({
-            query: (name) => `pokemon/${name}`,
+        getAvailableRide: build.query({
+            query: () => `ride/available`,
         }),
         requestRide: build.mutation({
             query: (rideInfo) => ({
@@ -15,4 +15,4 @@ export const rideApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useRequestRideMutation } = rideApi
+export const { useGetAvailableRideQuery, useRequestRideMutation } = rideApi
