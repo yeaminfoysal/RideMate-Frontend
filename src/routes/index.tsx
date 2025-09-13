@@ -13,6 +13,7 @@ import FeaturesPage from "@/pages/FeaturesPage";
 import ContactPage from "@/pages/ContactPage";
 import FaqPage from "@/pages/FAQPage";
 import RegistrationPage from "@/pages/Registration";
+import AccountStatusPage from "@/pages/AccountStatusPage";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
     {
         path: "/unauthorized",
         Component: Unauthorized
+    },
+    {
+        path: "/account-status",
+        Component: AccountStatusPage
     },
     {
         path: "/user",
