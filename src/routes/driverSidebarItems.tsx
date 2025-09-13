@@ -1,3 +1,4 @@
+import ActiveRide from "@/pages/driver/ActiveRide";
 import RideRequests from "@/pages/driver/RideRequests";
 
 export const driverSidebarItems = [
@@ -10,10 +11,11 @@ export const driverSidebarItems = [
                 url: "/driver/ride-requests",
                 component: RideRequests
             },
-            // {
-            //     title: "Project Structure",
-            //     url: "#",
-            // },
+            {
+                title: "Active Ride",
+                url: "/driver/active-ride",
+                component: ActiveRide
+            }
         ],
     },
     // {

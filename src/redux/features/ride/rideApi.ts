@@ -11,8 +11,22 @@ export const rideApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: rideInfo,
             }),
-        })
+        }),
+        acceptRide: build.mutation({
+            query: ({ id }) => ({
+                url: `/ride/accept/${id}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['Rides'],
+        }),
+        rejectRide: build.mutation({
+            query: (id) => ({
+                url: `/ride/reject/${id}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['Rides'],
+        }),
     }),
 })
 
-export const { useGetAvailableRideQuery, useRequestRideMutation } = rideApi
+export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation } = rideApi
