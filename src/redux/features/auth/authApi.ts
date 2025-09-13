@@ -12,6 +12,13 @@ export const authApi = baseApi.injectEndpoints({
                 body: userInfo,
             }),
         }),
+        register: build.mutation({
+            query: (userInfo) => ({
+                url: `/auth/register`,
+                method: 'POST',
+                body: userInfo,
+            }),
+        }),
         userInfo: build.query({
             query: () => "/user/me"
         }),
@@ -20,8 +27,8 @@ export const authApi = baseApi.injectEndpoints({
                 url: "/auth/logout",
                 method: "POST",
             })
-        }),
+        })
     }),
 })
 
-export const { useGetPokemonByNameQuery, useLoginMutation, useUserInfoQuery, useLogoutMutation } = authApi
+export const { useGetPokemonByNameQuery, useLoginMutation, useUserInfoQuery, useLogoutMutation, useRegisterMutation } = authApi

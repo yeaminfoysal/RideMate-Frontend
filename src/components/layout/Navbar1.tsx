@@ -55,6 +55,7 @@ const Navbar1 = ({
         { title: "Home", url: "/", role: "PUBLIC" },
         { title: "About", url: "/about", role: "PUBLIC" },
         { title: "Features", url: "/features", role: "PUBLIC" },
+        { title: "FAQ", url: "/faq", role: "PUBLIC" },
         { title: "Contact", url: "/contact", role: "PUBLIC" },
         { title: "Dashboard", url: "/user", role: "USER" },
         {
@@ -99,6 +100,7 @@ const Navbar1 = ({
 
     const { data } = useUserInfoQuery(undefined);
     const userRole = data?.data?.role || "PUBLIC";
+    console.log(data)
 
     // ✅ filter menu based on role
     const filterMenu = (menuItems: MenuItem[]): MenuItem[] => {
@@ -138,7 +140,7 @@ const Navbar1 = ({
                     </div>
                     <div className="flex gap-2 items-center">
                         <ModeToggle />
-                        
+
                         {data?.data?.email && (
                             <Button
                                 onClick={handleLogout}
