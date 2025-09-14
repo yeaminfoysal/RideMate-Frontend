@@ -15,6 +15,7 @@ import FaqPage from "@/pages/FAQPage";
 import RegistrationPage from "@/pages/Registration";
 import AccountStatusPage from "@/pages/AccountStatusPage";
 import { driverSidebarItems } from "./driverSidebarItems";
+import RideDetails from "@/pages/User/RideDetails";
 
 export const router = createBrowserRouter([
     {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Navigate to={"/user/ride-book"} />
+            },
+            {
+                path: "ride-details/:id",
+                Component: RideDetails
             },
             ...generateRoutes(userSidebarItems)
         ]

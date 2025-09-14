@@ -26,8 +26,11 @@ import { Button } from "@/components/ui/button";
 
 // ✅ API Hook
 import { useGetMyRideHistoryQuery } from "@/redux/features/ride/rideApi";
+import { useUserInfoQuery } from "@/redux/features/auth/authApi";
+import { Link } from "react-router";
 
 export default function RideHistory() {
+    const { data: userInfo } = useUserInfoQuery(undefined)
     const [search, setSearch] = useState("");
     const [statusFilter, setStatusFilter] = useState<string | undefined>(undefined);
     const [fareRange, setFareRange] = useState<number[]>([0, 5000]);
@@ -65,7 +68,7 @@ export default function RideHistory() {
                 {/* Search */}
                 <div className="relative">
                     <Input
-                        placeholder="Search rides..."
+                        placeholder="Search by pickup or destination"
                         value={search}
                         onChange={(e) => {
                             setSearch(e.target.value);
@@ -133,7 +136,7 @@ export default function RideHistory() {
                     <Slider
                         min={0}
                         max={5000}
-                        step={50}
+                        step={1}
                         value={fareRange}
                         onValueChange={(value) => {
                             setFareRange(value as [number, number]);
@@ -185,6 +188,13 @@ export default function RideHistory() {
                                 <div>
                                     <span className="font-medium">Payment:</span> {ride.paymentMethod}
                                 </div>
+                                <div className="ml-auto">
+                                    {userInfo?.data.role === "USER" && (
+                                        <Button size={"sm"} asChild>
+                                            <Link to={`/user/ride-details/${ride._id}`}>View Details</Link>
+                                        </Button>
+                                    )}
+                                </div>
                             </CardContent>
                         </Card>
                     ))
@@ -197,7 +207,7 @@ export default function RideHistory() {
 
             {/* 📄 Pagination */}
             {totalPages > 1 && (
-                <Pagination className="mt-8">
+                <Pagination className="mt-8 ml-auto">
                     <PaginationContent>
                         <PaginationItem>
                             <PaginationPrevious onClick={() => setPage((p) => Math.max(p - 1, 1))} />
