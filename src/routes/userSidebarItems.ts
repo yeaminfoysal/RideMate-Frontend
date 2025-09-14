@@ -1,4 +1,5 @@
 import RideBook from "@/pages/User/RideBook";
+import RideHistory from "@/pages/User/RideHistory";
 
 export const userSidebarItems = [
     {
@@ -10,10 +11,11 @@ export const userSidebarItems = [
                 url: "/user/ride-book",
                 component: RideBook
             },
-            // {
-            //     title: "Project Structure",
-            //     url: "#",
-            // },
+            {
+                title: "Ride History",
+                url: "/user/ride-history",
+                component: RideHistory
+            },
         ],
     },
     // {

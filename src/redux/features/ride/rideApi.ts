@@ -26,7 +26,15 @@ export const rideApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['Rides'],
         }),
+        getMyRideHistory: build.query({
+            query: (params) => ({
+                url: `/ride/me`,
+                params: params
+            }),
+            providesTags: ['Rides'],
+            transformResponse: (response) => response.data,
+        }),
     }),
 })
 
-export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation } = rideApi
+export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery } = rideApi

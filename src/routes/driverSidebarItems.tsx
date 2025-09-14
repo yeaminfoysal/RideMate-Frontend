@@ -1,5 +1,6 @@
 import ActiveRide from "@/pages/driver/ActiveRide";
 import IncomingRequestsPage from "@/pages/driver/IncomingRequestsPage";
+import RideHistory from "@/pages/User/RideHistory";
 
 export const driverSidebarItems = [
     {
@@ -15,6 +16,11 @@ export const driverSidebarItems = [
                 title: "Active Ride",
                 url: "/driver/active-ride",
                 component: ActiveRide
+            },
+            {
+                title: "Ride History",
+                url: "/driver/ride-history",
+                component: RideHistory
             }
         ],
     },

@@ -5,14 +5,18 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { setPickup, setDestination, resetRide } from "@/redux/features/ride/rideSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useState } from "react";
 
 const RideBook = () => {
   const dispatch = useAppDispatch();
   const { pickup, destination } = useAppSelector((state) => state.ride);
   const [requestRide] = useRequestRideMutation();
 
+  // state for payment method
+  const [paymentMethod, setPaymentMethod] = useState("bkash");
+
   const handleSubmit = async () => {
-    if (pickup && destination) {
+    if (pickup && destination && paymentMethod) {
       const formatAddress = (address: string) =>
         address.split(",").slice(0, 2).map((part) => part.trim()).join(", ");
 
@@ -27,6 +31,7 @@ const RideBook = () => {
           lng: destination.lng,
           address: formatAddress(destination.name),
         },
+        paymentMethod, // add payment method
       };
 
       const toastId = toast.loading("Requesting for ride");
@@ -37,13 +42,14 @@ const RideBook = () => {
 
         // reset redux state after success
         dispatch(resetRide());
+        setPaymentMethod("bkash"); // reset
       } catch (error) {
         console.log(error);
         const err = error as { data?: { message?: string } };
         toast.error(err.data?.message || "Something went wrong", { id: toastId });
       }
     } else {
-      alert("Please select both pickup and destination.");
+      alert("Please select pickup, destination and payment method.");
     }
   };
 
@@ -56,7 +62,7 @@ const RideBook = () => {
           for later directly from your browser.
         </p>
 
-        {/* pass redux value as default */}
+        {/* Pickup & Destination */}
         <LocationInput
           label="Pickup Location"
           value={pickup}
@@ -67,6 +73,21 @@ const RideBook = () => {
           value={destination}
           onSelect={(loc) => dispatch(setDestination(loc))}
         />
+
+        {/* Payment Method Select */}
+        <div className="mt-5">
+          <label className="block mb-2 font-medium">Payment Method</label>
+          <select
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            className="w-full border rounded-md p-2"
+          >
+            <option value="bkash">Bkash</option>
+            <option value="rocket">Rocket</option>
+            <option value="visa">Visa</option>
+            <option value="master">MasterCard</option>
+          </select>
+        </div>
 
         <Button onClick={handleSubmit} className="w-full mt-10">
           Book Ride
