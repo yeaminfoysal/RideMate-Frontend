@@ -24,7 +24,7 @@ export default function UserManagement() {
   const [role, setRole] = useState<string | undefined>();
   const [isBlocked, setIsBlocked] = useState<boolean | undefined>();
 
-  const { data, isLoading, refetch } = useGetAllUsersQuery({
+  const { data, isLoading } = useGetAllUsersQuery({
     searchTerm: search || undefined,
     isBlocked,
     role,
@@ -37,7 +37,6 @@ export default function UserManagement() {
     try {
       await blockUser(id).unwrap();
       toast.success("User blocked successfully");
-      refetch();
     } catch {
       toast.error("Failed to block user");
     }
@@ -47,7 +46,6 @@ export default function UserManagement() {
     try {
       await unblockUser(id).unwrap();
       toast.success("User unblocked successfully");
-      refetch();
     } catch {
       toast.error("Failed to unblock user");
     }
@@ -93,8 +91,6 @@ export default function UserManagement() {
                 <SelectItem value="false">Unblocked</SelectItem>
               </SelectContent>
             </Select>
-
-            <Button onClick={() => refetch()}>Apply</Button>
           </div>
 
           {/* Table */}

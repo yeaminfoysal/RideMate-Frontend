@@ -31,7 +31,7 @@ export const driverApi = baseApi.injectEndpoints({
         }),
         setDriverApprovalStatus: build.mutation({
             query: ({ id, ...rest }) => ({
-                url: `/approval/${id}`,
+                url: `/driver/approval/${id}`,
                 method: 'PATCH',
                 body: rest
             }),
