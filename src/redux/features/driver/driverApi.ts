@@ -29,7 +29,23 @@ export const driverApi = baseApi.injectEndpoints({
             query: () => "/driver/profile",
             providesTags: ["Driver"]
         }),
+        setDriverApprovalStatus: build.mutation({
+            query: ({ id, ...rest }) => ({
+                url: `/approval/${id}`,
+                method: 'PATCH',
+                body: rest
+            }),
+            invalidatesTags: ['Drivers'],
+        }),
+        getAllDrivers: build.query({
+            query: (params) => ({
+                url: "/driver/all-drivers",
+                params
+            }),
+            providesTags: ["Drivers"],
+            transformResponse: (response) => response.data,
+        }),
     }),
 })
 
-export const { useGetDriverStatusQuery, useSetAvailablityMutation, useGetEarningsQuery, useUpdateDriverProfileMutation, useGetDriverProfileQuery } = driverApi
+export const { useGetDriverStatusQuery, useSetAvailablityMutation, useGetEarningsQuery, useUpdateDriverProfileMutation, useGetDriverProfileQuery, useSetDriverApprovalStatusMutation, useGetAllDriversQuery } = driverApi

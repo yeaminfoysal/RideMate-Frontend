@@ -16,6 +16,7 @@ import RegistrationPage from "@/pages/Registration";
 import AccountStatusPage from "@/pages/AccountStatusPage";
 import { driverSidebarItems } from "./driverSidebarItems";
 import RideDetails from "@/pages/User/RideDetails";
+import { adminSidebarItems } from "./adminSidebarItems";
 
 export const router = createBrowserRouter([
     {
@@ -88,6 +89,17 @@ export const router = createBrowserRouter([
                 element: <Navigate to={"/driver/incoming-request"} />
             },
             ...generateRoutes(driverSidebarItems)
+        ]
+    },
+    {
+        path: "/admin",
+        Component: withAuth(DashboardLayout, role.admin),
+        children: [
+            {
+                index: true,
+                element: <Navigate to={"/admin/user-management"} />
+            },
+            ...generateRoutes(adminSidebarItems)
         ]
     },
 ]);

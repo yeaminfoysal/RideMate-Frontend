@@ -59,6 +59,7 @@ const Navbar1 = ({
         { title: "Contact", url: "/contact", role: "PUBLIC" },
         { title: "Dashboard", url: "/user", role: "USER" },
         { title: "Dashboard", url: "/driver", role: "DRIVER" },
+        { title: "Dashboard", url: "/admin", role: "ADMIN" },
         {
             title: "Products",
             url: "#",

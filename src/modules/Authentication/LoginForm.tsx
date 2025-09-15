@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useLoginMutation } from "@/redux/features/auth/authApi"
 import { Link, useNavigate } from "react-router"
+import { toast } from "sonner"
 // import { Label } from "@/components/ui/label"
 
 const formSchema = z.object({
@@ -42,21 +43,13 @@ export function LoginForm({
     })
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        const toastId = toast.loading("Signing....")
         try {
             await login(data).unwrap();
             navigate("/")
         } catch (err: any) {
-            console.error(err);
-
-            if (err.status === 401) {
-                // toast.error("Your account is not verified");
-                // navigate("/verify", { state: data.email });
-                console.log(err)
-            }
-            if (err.status === 400) {
-                // toast.error("Invalied credientials");
-                console.log(err)
-            }
+            console.error(err.data.message);
+            toast.error(err.data.message, { id: toastId })
         }
     };
 
