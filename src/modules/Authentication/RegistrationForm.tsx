@@ -23,7 +23,7 @@ const formSchema = z.object({
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, { message: "Password must be at least 6 characters." }),
     confirmPassword: z.string().min(6),
-    role: z.enum(["Rider", "Driver"], {
+    role: z.enum(["RIDER", "DRIVER"], {
         error: "Role is required",
     }),
 }).refine((data) => data.password === data.confirmPassword, {
@@ -52,9 +52,7 @@ export function RegistrationForm({
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         try {
             await registerUser(data).unwrap()
-            // Redirect to role-based landing page
-            if (data.role === "Rider") navigate("/rider/dashboard")
-            if (data.role === "Driver") navigate("/driver/dashboard")
+            navigate("/login")
         } catch (err: any) {
             console.error(err)
         }
@@ -157,8 +155,8 @@ export function RegistrationForm({
                                                     <SelectValue placeholder="Select your role" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="Rider">Rider</SelectItem>
-                                                    <SelectItem value="Driver">Driver</SelectItem>
+                                                    <SelectItem value="RIDER">Rider</SelectItem>
+                                                    <SelectItem value="DRIVER">Driver</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </FormControl>

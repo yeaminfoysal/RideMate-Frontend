@@ -1,71 +1,94 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useChangePasswordMutation, useUpdateProfileMutation, useUserInfoQuery } from "@/redux/features/auth/authApi";
+import {
+    useChangePasswordMutation,
+    useUpdateProfileMutation,
+    useUserInfoQuery,
+} from "@/redux/features/auth/authApi";
+import {
+    useGetDriverProfileQuery,
+    useUpdateDriverProfileMutation,
+} from "@/redux/features/driver/driverApi";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useForm } from "react-hook-form";
-import { User, Shield, Mail, Phone } from "lucide-react";
+import { User, Shield, Mail, Phone, Car, IdCard } from "lucide-react";
 import { toast } from "sonner";
 
 export default function ProfileManagement() {
     const { data, isLoading } = useUserInfoQuery(undefined);
-    const [updateProfile] = useUpdateProfileMutation()
-    const [changePassword] = useChangePasswordMutation()
+    const { data: driverProfile } = useGetDriverProfileQuery(undefined, {
+        skip: data?.data?.role !== "DRIVER",
+    });
+    const [updateProfile] = useUpdateProfileMutation();
+    const [changePassword] = useChangePasswordMutation();
+    const [updateDriverProfile] = useUpdateDriverProfileMutation();
 
     const profile = data?.data;
 
-    // Forms
-    const {
-        register: registerProfile,
-        handleSubmit: handleProfileSubmit,
-    } = useForm<{ name: string; phone: string }>();
+    // Profile form
+    const { register: registerProfile, handleSubmit: handleProfileSubmit } =
+        useForm<{ name: string; phone: string }>();
 
-    const {
-        register: registerPassword,
-        handleSubmit: handlePasswordSubmit,
-    } = useForm<{ currentPassword: string; newPassword: string }>();
+    // Password form
+    const { register: registerPassword, handleSubmit: handlePasswordSubmit } =
+        useForm<{ currentPassword: string; newPassword: string }>();
 
+    // Driver Profile form
+    const { register: registerDriver, handleSubmit: handleDriverSubmit } =
+        useForm<{ licenseNumber: string; vehicle: string }>();
+
+    // Profile update handler
     const onProfileUpdate = async (values: { name: string; phone: string }) => {
-        const toastId = toast.loading("Updating profile");
-
+        const toastId = toast.loading("Updating profile...");
         try {
             const res = await updateProfile(values).unwrap();
-            if (res.success) toast.success("Profile updated successfully", { id: toastId })
-
+            if (res.success) toast.success("Profile updated successfully", { id: toastId });
         } catch (error) {
             console.log(error);
-            toast.error("Profile updated failed, ", { id: toastId })
+            toast.error("Profile update failed", { id: toastId });
         }
     };
 
+    // Password change handler
     const onPasswordChange = async (values: {
         currentPassword: string;
         newPassword: string;
     }) => {
-        const toastId = toast.loading("Changing password");
-
+        const toastId = toast.loading("Changing password...");
         try {
             const res = await changePassword(values).unwrap();
-            if (res.success) toast.success("Password changed successfully", { id: toastId })
-
+            if (res.success) toast.success("Password changed successfully", { id: toastId });
         } catch (error: any) {
             console.log(error);
-            toast.error(`Password changing failed, ${error.data.message}`, { id: toastId })
+            toast.error(`Password change failed: ${error.data?.message}`, { id: toastId });
+        }
+    };
+
+    // Driver profile update handler
+    const onDriverUpdate = async (values: {
+        licenseNumber: string;
+        vehicle: string;
+    }) => {
+        const toastId = toast.loading("Updating driver profile...");
+        try {
+            const res = await updateDriverProfile(values).unwrap();
+            if (res.success) toast.success("Driver profile updated", { id: toastId });
+        } catch (error) {
+            console.log(error);
+            toast.error("Driver profile update failed", { id: toastId });
         }
     };
 
     if (isLoading) {
-        return (
-            <p className="text-center text-muted-foreground">Loading profile...</p>
-        );
+        return <p className="text-center text-muted-foreground">Loading profile...</p>;
     }
 
     if (!profile) {
-        return (
-            <p className="text-center text-muted-foreground">No profile found.</p>
-        );
+        return <p className="text-center text-muted-foreground">No profile found.</p>;
     }
 
     return (
@@ -89,14 +112,26 @@ export default function ProfileManagement() {
                         <Shield className="h-4 w-4 text-muted-foreground" />
                         <span>Role: {profile.role}</span>
                     </div>
+                    {profile.role == "DRIVER" && (
+                        <div className="flex items-center gap-2">
+                            <Shield className="h-4 w-4 text-muted-foreground" />
+                            <span>Approval Status: {driverProfile?.data.approvalStatus}</span>
+                        </div>
+                    )}
                 </CardContent>
             </Card>
 
             {/* Tabs for Editing */}
             <Tabs defaultValue="profile" className="w-full">
-                <TabsList className="grid grid-cols-2 md:w-[400px]">
+                <TabsList
+                    className={`grid ${profile.role === "DRIVER" ? "grid-cols-3" : "grid-cols-2"
+                        } md:w-[500px]`}
+                >
                     <TabsTrigger value="profile">Edit Profile</TabsTrigger>
                     <TabsTrigger value="password">Change Password</TabsTrigger>
+                    {profile.role === "DRIVER" && (
+                        <TabsTrigger value="driver">Driver Profile</TabsTrigger>
+                    )}
                 </TabsList>
 
                 {/* Edit Profile */}
@@ -171,6 +206,51 @@ export default function ProfileManagement() {
 
                                 <Button type="submit" className="w-full">
                                     Update Password
+                                </Button>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+
+                {/* Driver Profile */}
+                <TabsContent value="driver">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Driver Profile</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <form
+                                onSubmit={handleDriverSubmit(onDriverUpdate)}
+                                className="space-y-4"
+                            >
+                                <div className="space-y-2">
+                                    <Label htmlFor="licenseNumber">License Number</Label>
+                                    <div className="flex items-center gap-2">
+                                        <IdCard className="h-4 w-4 text-muted-foreground" />
+                                        <Input
+                                            id="licenseNumber"
+                                            defaultValue={driverProfile?.data.licenseNumber}
+                                            placeholder="Enter license number"
+                                            {...registerDriver("licenseNumber")}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="vehicleModel">Vehicle Model</Label>
+                                    <div className="flex items-center gap-2">
+                                        <Car className="h-4 w-4 text-muted-foreground" />
+                                        <Input
+                                            id="vehicle"
+                                            defaultValue={driverProfile?.data.vehicle}
+                                            placeholder="Enter vehicle model"
+                                            {...registerDriver("vehicle")}
+                                        />
+                                    </div>
+                                </div>
+
+                                <Button type="submit" className="w-full">
+                                    Save Driver Info
                                 </Button>
                             </form>
                         </CardContent>

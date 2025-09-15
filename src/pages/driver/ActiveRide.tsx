@@ -2,6 +2,7 @@
 import RideMap from "@/modules/User/RideMap";
 import {
     useGetActiveRideQuery,
+    useRejectRideMutation,
     useUpdateRideStatusMutation,
 } from "@/redux/features/ride/rideApi";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ export default function ActiveRide() {
     const { data, isLoading } = useGetActiveRideQuery(undefined);
     const [updateRideStatus, { isLoading: updating }] =
         useUpdateRideStatusMutation();
+    const [cancelRide] = useRejectRideMutation();
 
     const [successOpen, setSuccessOpen] = useState(false);
 
@@ -48,6 +50,15 @@ export default function ActiveRide() {
             toast.error(error?.data?.message || "Failed to update status");
         }
     };
+    console.log(activeRide)
+
+    const handleCancelRide = () => {
+        try {
+            cancelRide({ id: activeRide._id }).unwrap();
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className="container mx-auto px-4 py-8 space-y-6">
@@ -106,7 +117,7 @@ export default function ActiveRide() {
                     style={{
                         left: "12.5%",
                         width: `${(rideStatuses.indexOf(currentStatus) /
-                                (rideStatuses.length - 1)) *
+                            (rideStatuses.length - 1)) *
                             75
                             }%`,
                     }}
@@ -156,7 +167,7 @@ export default function ActiveRide() {
                     <Button
                         variant="destructive"
                         className="w-1/2"
-                        onClick={() => handleUpdateStatus("cancelled")}
+                        onClick={() => handleCancelRide()}
                         disabled={updating}
                     >
                         Cancel Ride
