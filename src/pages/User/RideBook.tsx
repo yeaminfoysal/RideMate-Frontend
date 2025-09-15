@@ -6,11 +6,15 @@ import { toast } from "sonner";
 import { setPickup, setDestination, resetRide } from "@/redux/features/ride/rideSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { useState } from "react";
+import { useUserInfoQuery } from "@/redux/features/auth/authApi";
+import { Navigate, useNavigate } from "react-router";
 
 const RideBook = () => {
+  const { data: userInfo } = useUserInfoQuery(undefined);
   const dispatch = useAppDispatch();
   const { pickup, destination } = useAppSelector((state) => state.ride);
   const [requestRide] = useRequestRideMutation();
+  const navigate = useNavigate();
 
   // state for payment method
   const [paymentMethod, setPaymentMethod] = useState("bkash");
@@ -39,6 +43,7 @@ const RideBook = () => {
       try {
         await requestRide(rideData).unwrap();
         toast.success("Request Added", { id: toastId });
+        navigate("/user/live-ride")
 
         // reset redux state after success
         dispatch(resetRide());
@@ -52,6 +57,8 @@ const RideBook = () => {
       alert("Please select pickup, destination and payment method.");
     }
   };
+
+  if (userInfo?.data.activeRide) return (<Navigate to={"/user/live-ride"}></Navigate>)
 
   return (
     <div className="p-10 mx-auto mt-10 space-y-4 grid grid-cols-2 gap-10 w-full">

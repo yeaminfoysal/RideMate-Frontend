@@ -93,8 +93,16 @@ export default function RideHistory() {
                     <SelectContent>
                         <SelectItem value="all">All</SelectItem>
                         <SelectItem value="completed">Completed</SelectItem>
-                        <SelectItem value="cancelled">Cancelled</SelectItem>
-                        <SelectItem value="requested">Requested</SelectItem>
+                        <SelectItem
+                            value={`${userInfo?.data.role === "USER" ? "canceled" : "picked_up"}`}
+                        >
+                            {`${userInfo?.data.role === "USER" ? "Canceled" : "Picked Up"}`}
+                        </SelectItem>
+                        <SelectItem
+                            value={`${userInfo?.data.role === "USER" ? "requested" : "accepted"}`}
+                        >
+                            {`${userInfo?.data.role === "USER" ? "Requested" : "Accepted"}`}
+                        </SelectItem>
                     </SelectContent>
                 </Select>
 

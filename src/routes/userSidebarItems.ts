@@ -1,3 +1,4 @@
+import LiveRide from "@/pages/User/LiveRide";
 import ProfileManagement from "@/pages/User/ProfileManagement";
 import RideBook from "@/pages/User/RideBook";
 import RideHistory from "@/pages/User/RideHistory";
@@ -11,6 +12,11 @@ export const userSidebarItems = [
                 title: "Ride Book",
                 url: "/user/ride-book",
                 component: RideBook
+            },
+            {
+                title: "Live Ride",
+                url: "/user/live-ride",
+                component: LiveRide
             },
             {
                 title: "Ride History",

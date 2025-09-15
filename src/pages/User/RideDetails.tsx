@@ -13,6 +13,7 @@ import {
     Clock,
     DollarSign,
     MapPin,
+    Phone,
     User,
 } from "lucide-react";
 
@@ -136,11 +137,15 @@ export default function RideDetails() {
                             </div>
                             <div className="flex items-center gap-2">
                                 <Car className="h-4 w-4 text-muted-foreground" />
-                                <span>Vehicle: {ride.driver.vehicle}</span>
+                                <span>Vehicle: {ride?.driver?.vehicle}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Phone className="h-4 w-4 text-muted-foreground" />
+                                <span>Phone: {ride?.driver?.user?.phone}</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <span className="text-xs text-muted-foreground">
-                                    License: {ride.driver.licenseNumber}
+                                    License: {ride?.driver?.licenseNumber}
                                 </span>
                             </div>
                         </CardContent>

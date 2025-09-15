@@ -10,7 +10,7 @@ import {
   useGetAvailableRideQuery,
   useRejectRideMutation,
 } from "@/redux/features/ride/rideApi";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { useGetDriverStatusQuery } from "@/redux/features/driver/driverApi";
 
 type IncomingRequests = {
@@ -34,6 +34,9 @@ export default function IncomingRequestsPage() {
 
   const isOnline = driverStatus?.data?.isOnline ?? false;
 
+  const activeRide = driverStatus?.data?.activeRide
+
+
   // Update rides whenever API data changes
   useEffect(() => {
     if (data?.data) {
@@ -50,7 +53,7 @@ export default function IncomingRequestsPage() {
       if (action === "accepted") {
         await acceptRide({ id: rideId }).unwrap();
         toast.success("Ride accepted successfully!");
-        navigate("/active-ride");
+        navigate("/driver/active-ride");
       } else {
         await rejectRide({ id: rideId }).unwrap();
         toast.success("Ride rejected successfully!");
@@ -70,6 +73,10 @@ export default function IncomingRequestsPage() {
         </p>
       </div>
     );
+  }
+
+  if (activeRide) {
+    return <Navigate to={"/driver/active-ride"}/>;
   }
 
   // Error state

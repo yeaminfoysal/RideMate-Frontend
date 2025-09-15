@@ -40,7 +40,22 @@ export const rideApi = baseApi.injectEndpoints({
             }),
             transformResponse: (response) => response.data,
         }),
+        getActiveRide: build.query({
+            query: () => ({
+                url: `/ride/active`,
+            }),
+            providesTags: ["Rides"]
+            // transformResponse: (response) => response.data,
+        }),
+        updateRideStatus: build.mutation({
+            query: ({ rideId, ...body }) => ({
+                url: `/ride/status/${rideId}`,
+                method: 'PATCH',
+                body: body
+            }),
+            invalidatesTags: ['Rides', "Driver"],
+        }),
     }),
 })
 
-export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery, useGetRideDetailsQuery } = rideApi
+export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery, useGetRideDetailsQuery, useGetActiveRideQuery, useUpdateRideStatusMutation } = rideApi
