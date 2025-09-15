@@ -20,8 +20,15 @@ export const rideApi = baseApi.injectEndpoints({
             invalidatesTags: ['Rides'],
         }),
         rejectRide: build.mutation({
-            query: (id) => ({
+            query: ({ id }) => ({
                 url: `/ride/reject/${id}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['Rides'],
+        }),
+        cancelRide: build.mutation({
+            query: (id) => ({
+                url: `/ride/cancel/${id}`,
                 method: 'PATCH',
             }),
             invalidatesTags: ['Rides'],
@@ -58,4 +65,4 @@ export const rideApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery, useGetRideDetailsQuery, useGetActiveRideQuery, useUpdateRideStatusMutation } = rideApi
+export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery, useGetRideDetailsQuery, useGetActiveRideQuery, useUpdateRideStatusMutation, useCancelRideMutation } = rideApi

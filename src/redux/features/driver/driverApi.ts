@@ -6,6 +6,9 @@ export const driverApi = baseApi.injectEndpoints({
             query: () => "/driver/availability-status",
             providesTags: ["Driver"]
         }),
+        getEarnings: build.query({
+            query: () => "/driver/earnings",
+        }),
         setAvailablity: build.mutation({
             query: (body) => ({
                 url: "/driver/availability",
@@ -17,4 +20,4 @@ export const driverApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useGetDriverStatusQuery, useSetAvailablityMutation } = driverApi
+export const { useGetDriverStatusQuery, useSetAvailablityMutation, useGetEarningsQuery } = driverApi

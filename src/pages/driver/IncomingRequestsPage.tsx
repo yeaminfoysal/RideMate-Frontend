@@ -67,7 +67,7 @@ export default function IncomingRequestsPage() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+      <div className="flex items-center justify-center min-h-screen  ">
         <p className="text-gray-600 dark:text-gray-300 animate-pulse">
           Loading ride requests...
         </p>
@@ -82,7 +82,7 @@ export default function IncomingRequestsPage() {
   // Error state
   if (isError) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+      <div className="flex items-center justify-center min-h-screen  ">
         <p className="text-red-600 dark:text-red-400">
           Failed to load ride requests. Please try again.
         </p>
@@ -93,7 +93,7 @@ export default function IncomingRequestsPage() {
   // If driver is offline → show notice
   if (!isOnline) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 px-6">
+      <div className="flex flex-col items-center justify-center min-h-screen   px-6">
         <WifiOff className="w-16 h-16 text-gray-500 dark:text-gray-400 mb-4" />
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
           You are currently Offline
@@ -109,7 +109,7 @@ export default function IncomingRequestsPage() {
 
   // Driver is online → show ride requests
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 transition-colors duration-300">
+    <div className="min-h-screen   p-6 transition-colors duration-300">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-gray-100">
         🚖 Available Ride Requests
       </h1>
@@ -122,7 +122,7 @@ export default function IncomingRequestsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg">
+            <Card className="  border   rounded-2xl shadow-lg">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-lg text-gray-900 dark:text-gray-100">
                   <span className="flex items-center gap-2">
