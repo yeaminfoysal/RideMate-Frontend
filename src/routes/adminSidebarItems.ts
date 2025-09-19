@@ -1,5 +1,6 @@
 import DriverManagement from "@/pages/Admin/DriverManagement";
 import UserManagement from "@/pages/Admin/UserManagement";
+import ProfileManagement from "@/pages/User/ProfileManagement";
 
 
 export const adminSidebarItems = [
@@ -16,6 +17,11 @@ export const adminSidebarItems = [
                 title: "Driver Managemment",
                 url: "/admin/driver-management",
                 component: DriverManagement
+            },
+            {
+                title: "Profile Managemment",
+                url: "/admin/profile",
+                component: ProfileManagement
             }
         ],
     },
