@@ -46,6 +46,7 @@ export function LoginForm({
         const toastId = toast.loading("Signing....")
         try {
             await login(data).unwrap();
+            toast.success("Login successfull", { id: toastId })
             navigate("/")
         } catch (err: any) {
             console.error(err.data.message);

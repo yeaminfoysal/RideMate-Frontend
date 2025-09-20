@@ -62,7 +62,15 @@ export const rideApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ['Rides', "Driver"],
         }),
+        getAllRides: build.query({
+            query: (params) => ({
+                url: `/ride/all`,
+                params: params
+            }),
+            providesTags: ['Rides'],
+            transformResponse: (response) => response.data,
+        }),
     }),
 })
 
-export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery, useGetRideDetailsQuery, useGetActiveRideQuery, useUpdateRideStatusMutation, useCancelRideMutation } = rideApi
+export const { useGetAvailableRideQuery, useRequestRideMutation, useAcceptRideMutation, useRejectRideMutation, useGetMyRideHistoryQuery, useGetRideDetailsQuery, useGetActiveRideQuery, useUpdateRideStatusMutation, useCancelRideMutation, useGetAllRidesQuery } = rideApi

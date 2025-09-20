@@ -1,4 +1,5 @@
 import DriverManagement from "@/pages/Admin/DriverManagement";
+import RideOversight from "@/pages/Admin/RideOversight";
 import UserManagement from "@/pages/Admin/UserManagement";
 import ProfileManagement from "@/pages/User/ProfileManagement";
 
@@ -17,6 +18,11 @@ export const adminSidebarItems = [
                 title: "Driver Managemment",
                 url: "/admin/driver-management",
                 component: DriverManagement
+            },
+            {
+                title: "Ride Oversight",
+                url: "/admin/ride-oversight",
+                component: RideOversight
             },
             {
                 title: "Profile Managemment",
