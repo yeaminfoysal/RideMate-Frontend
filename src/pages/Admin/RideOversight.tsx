@@ -198,15 +198,9 @@ export default function RideOversight() {
                                     <span className="font-medium">Payment:</span> {ride.paymentMethod}
                                 </div>
 
-                                {/* Rider Email */}
+                                {/* Rider Name */}
                                 <div>
-                                    <span className="font-medium">Rider Email:</span> {ride.rider?.email || "N/A"}
-                                </div>
-
-                                {/* Driver Email */}
-                                <div>
-                                    <span className="font-medium">Driver Email:</span>{" "}
-                                    {ride.driver?.user?.email || "Not Assigned"}
+                                    <span className="font-medium">Rider Name:</span> {ride.rider?.name || "N/A"}
                                 </div>
 
                                 {/* Requested At */}
@@ -215,16 +209,33 @@ export default function RideOversight() {
                                     {ride.requestedAt ? new Date(ride.requestedAt).toLocaleString() : "N/A"}
                                 </div>
 
+                                {/* Rider Email */}
+                                <div>
+                                    <span className="font-medium">Rider Email:</span> {ride.rider?.email || "N/A"}
+                                </div>
+
                                 {/* Accepted At */}
                                 <div>
                                     <span className="font-medium">Accepted At:</span>{" "}
                                     {ride.acceptedAt ? new Date(ride.acceptedAt).toLocaleString() : "N/A"}
                                 </div>
 
+                                {/* Driver Name */}
+                                <div>
+                                    <span className="font-medium">Driver Name:</span>{" "}
+                                    {ride.driver?.user?.name || "Not Assigned"}
+                                </div>
+
                                 {/* Picked Up At */}
                                 <div>
                                     <span className="font-medium">Picked Up At:</span>{" "}
                                     {ride.pickedUpAt ? new Date(ride.pickedUpAt).toLocaleString() : "N/A"}
+                                </div>
+
+                                {/* Driver Email */}
+                                <div>
+                                    <span className="font-medium">Driver Email:</span>{" "}
+                                    {ride.driver?.user?.email || "Not Assigned"}
                                 </div>
 
                                 {/* Completed At */}
