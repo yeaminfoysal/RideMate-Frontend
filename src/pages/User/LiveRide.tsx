@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useEffect, useState } from "react";
 import { useCancelRideMutation, useGetActiveRideQuery } from "@/redux/features/ride/rideApi";
@@ -15,15 +16,17 @@ import {
 } from "@/components/ui/alert-dialog";
 import { MapPin, Car, Phone, User, CreditCard } from "lucide-react";
 import RideMap from "@/modules/User/RideMap";
+import { useCreatePaymentUrlMutation } from "@/redux/features/payment/paymentApi";
+import { toast } from "sonner";
 
 export default function LiveRide() {
     const { data, isLoading, refetch } = useGetActiveRideQuery(undefined);
     const [cancelRide, { isLoading: isCancelling }] = useCancelRideMutation();
     const [cancelOpen, setCancelOpen] = useState(false);
     const [paymentOpen, setPaymentOpen] = useState(false);
+    const [createPaymentUrl] = useCreatePaymentUrlMutation()
 
     const activeRide = data?.data?.activeRide;
-    console.log(activeRide)
 
     useEffect(() => {
         if (activeRide?.status === "completed") {
@@ -47,13 +50,34 @@ export default function LiveRide() {
         }
     };
 
-    const handlePayment = () => {
-        if (paymentUrl) {
-            window.location.href = paymentUrl;
-        } else {
-            console.error("No payment URL found for this ride.");
+    const handlePayment = async () => {
+        if (!_id) {
+            toast.error("Ride ID is missing!");
+            return;
+        }
+
+        const toastId = toast.loading("Processing payment...");
+        try {
+            if (paymentUrl) {
+                window.location.href = paymentUrl;
+                toast.dismiss(toastId);
+                return;
+            }
+
+            const res = await createPaymentUrl(_id).unwrap();
+            console.log(res)
+            if (res?.data.updatedPayment.paymentUrl) {
+                toast.success("Now you can make payment", { id: toastId });
+                window.location.href = res?.data.updatedPayment.paymentUrl;
+            } else {
+                toast.error("Payment URL not found", { id: toastId });
+            }
+        } catch (error: any) {
+            console.error(error);
+            toast.error(error?.message || "Something went wrong", { id: toastId });
         }
     };
+
 
     return (
         <div className="container mx-auto px-4 py-8 space-y-6">

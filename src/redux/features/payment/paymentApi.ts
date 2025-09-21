@@ -3,7 +3,7 @@ import { baseApi } from "@/redux/baseApi";
 export const paymentApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         createPaymentUrl: build.mutation({
-            query: ({rideId}) => ({
+            query: (rideId) => ({
                 url: `/payment/init-payment/${rideId}`,
                 method: 'POST'
             }),

@@ -17,6 +17,9 @@ import AccountStatusPage from "@/pages/AccountStatusPage";
 import { driverSidebarItems } from "./driverSidebarItems";
 import RideDetails from "@/pages/User/RideDetails";
 import { adminSidebarItems } from "./adminSidebarItems";
+import PaymentSucccess from "@/pages/User/PaymentSuccess";
+import PaymentFailed from "@/pages/User/PaymentFaild";
+import PaymentCancel from "@/pages/User/PaymentCanceled";
 
 export const router = createBrowserRouter([
     {
@@ -76,6 +79,18 @@ export const router = createBrowserRouter([
             {
                 path: "ride-details/:id",
                 Component: RideDetails
+            },
+            {
+                path: "payment/success",
+                Component: PaymentSucccess
+            },
+            {
+                path: "payment/fail",
+                Component: PaymentFailed
+            },
+            {
+                path: "payment/cancel",
+                Component: PaymentCancel
             },
             ...generateRoutes(userSidebarItems)
         ]

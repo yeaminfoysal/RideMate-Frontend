@@ -82,7 +82,7 @@ export default function ActiveRide() {
 
     const handlePaymentRequest = async () => {
         try {
-            const res = await createPaymentUrl({ rideId: activeRide._id }).unwrap();
+            const res = await createPaymentUrl(activeRide._id).unwrap();
             if (res?.data?.url) {
                 window.location.href = res.data.url; // redirect to gateway
             }
