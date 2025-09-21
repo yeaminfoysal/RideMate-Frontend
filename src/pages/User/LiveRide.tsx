@@ -1,30 +1,57 @@
-import { useState } from "react";
+"use client"
+import { useEffect, useState } from "react";
 import { useCancelRideMutation, useGetActiveRideQuery } from "@/redux/features/ride/rideApi";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { MapPin, Car, Phone, User } from "lucide-react";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { MapPin, Car, Phone, User, CreditCard } from "lucide-react";
 import RideMap from "@/modules/User/RideMap";
 
 export default function LiveRide() {
     const { data, isLoading, refetch } = useGetActiveRideQuery(undefined);
     const [cancelRide, { isLoading: isCancelling }] = useCancelRideMutation();
-    const [open, setOpen] = useState(false);
-
-    if (isLoading) return <p>Loading live ride...</p>;
+    const [cancelOpen, setCancelOpen] = useState(false);
+    const [paymentOpen, setPaymentOpen] = useState(false);
 
     const activeRide = data?.data?.activeRide;
+    console.log(activeRide)
+
+    useEffect(() => {
+        if (activeRide?.status === "completed") {
+            setPaymentOpen(true);
+        }
+    }, [activeRide?.status]);
+
+    if (isLoading) return <p>Loading live ride...</p>;
     if (!activeRide) return <p>No ongoing ride right now.</p>;
 
-    const { _id, pickup, destination, fare, paymentMethod, status, driver } = activeRide;
+    const { _id, pickup, destination, fare, paymentMethod, status, driver, paymentUrl } =
+        activeRide;
 
     const handleCancel = async () => {
         try {
             await cancelRide(_id).unwrap();
-            setOpen(false);
+            setCancelOpen(false);
             refetch();
         } catch (error) {
             console.error(error);
+        }
+    };
+
+    const handlePayment = () => {
+        if (paymentUrl) {
+            window.location.href = paymentUrl;
+        } else {
+            console.error("No payment URL found for this ride.");
         }
     };
 
@@ -65,9 +92,7 @@ export default function LiveRide() {
                             </p>
                         </>
                     ) : (
-                        <p className="text-muted-foreground italic">
-                            No driver has accepted this ride yet.
-                        </p>
+                        <p className="text-muted-foreground italic">No driver has accepted this ride yet.</p>
                     )}
                 </CardContent>
             </Card>
@@ -84,19 +109,28 @@ export default function LiveRide() {
                     <p><strong>Payment:</strong> {paymentMethod}</p>
                     <p>
                         <strong>Status:</strong>{" "}
-                        <span className="capitalize text-emerald-500 font-medium">
+                        <span
+                            className={`capitalize font-medium ${status === "completed"
+                                ? "text-emerald-500"
+                                : status === "canceled"
+                                    ? "text-red-500"
+                                    : "text-blue-500"
+                                }`}
+                        >
                             {status.replace("_", " ")}
                         </span>
                     </p>
 
-                    {/* Cancel button only if status is requested */}
+                    {/* Cancel Ride */}
                     {status === "requested" && (
-                        <AlertDialog open={open} onOpenChange={setOpen}>
-                            <AlertDialogTrigger asChild>
-                                <Button variant="destructive" className="mt-4">
-                                    Cancel Ride
-                                </Button>
-                            </AlertDialogTrigger>
+                        <AlertDialog open={cancelOpen} onOpenChange={setCancelOpen}>
+                            <Button
+                                variant="destructive"
+                                className="mt-4"
+                                onClick={() => setCancelOpen(true)}
+                            >
+                                Cancel Ride
+                            </Button>
                             <AlertDialogContent>
                                 <AlertDialogHeader>
                                     <AlertDialogTitle>Cancel Ride?</AlertDialogTitle>
@@ -117,8 +151,42 @@ export default function LiveRide() {
                             </AlertDialogContent>
                         </AlertDialog>
                     )}
+                    {/* ✅ Extra Payment Button */}
+                    {status === "completed" && (
+                        <Button
+                            onClick={() => setPaymentOpen(true)}
+                            className="mt-4 bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-2"
+                        >
+                            <CreditCard className="h-4 w-4" />
+                            Make Payment
+                        </Button>
+                    )}
                 </CardContent>
             </Card>
+
+            {/* ✅ Auto Payment Modal */}
+            <AlertDialog open={paymentOpen} onOpenChange={setPaymentOpen}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Complete Payment</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Your ride has been <span className="font-semibold">completed</span>.
+                            Please proceed with the payment of{" "}
+                            <strong>{fare} BDT</strong>.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel onClick={() => setPaymentOpen(false)}>Close</AlertDialogCancel>
+                        <AlertDialogAction
+                            className="bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-2"
+                            onClick={handlePayment}
+                        >
+                            <CreditCard className="h-4 w-4" />
+                            Pay Now
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }

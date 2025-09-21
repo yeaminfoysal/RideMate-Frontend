@@ -2,9 +2,6 @@ import { baseApi } from "@/redux/baseApi";
 
 export const authApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getPokemonByName: build.query({
-            query: (name) => `pokemon/${name}`,
-        }),
         login: build.mutation({
             query: (userInfo) => ({
                 url: `/auth/login`,
@@ -47,4 +44,4 @@ export const authApi = baseApi.injectEndpoints({
     }),
 })
 
-export const { useGetPokemonByNameQuery, useLoginMutation, useUserInfoQuery, useLogoutMutation, useRegisterMutation, useUpdateProfileMutation, useChangePasswordMutation } = authApi
+export const { useLoginMutation, useUserInfoQuery, useLogoutMutation, useRegisterMutation, useUpdateProfileMutation, useChangePasswordMutation } = authApi

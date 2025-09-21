@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import RideMap from "@/modules/User/RideMap";
 import {
+    useCompleteRideMutation,
     useGetActiveRideQuery,
     useRejectRideMutation,
     useUpdateRideStatusMutation,
@@ -14,8 +15,10 @@ import {
 } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { MapPin } from "lucide-react";
-import { useState } from "react";
+import { CreditCard, MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { useCreatePaymentUrlMutation } from "@/redux/features/payment/paymentApi";
 
 const rideStatuses = ["accepted", "picked_up", "in_transit", "completed"];
 
@@ -23,11 +26,21 @@ export default function ActiveRide() {
     const { data, isLoading } = useGetActiveRideQuery(undefined);
     const [updateRideStatus, { isLoading: updating }] =
         useUpdateRideStatusMutation();
+    const [completeRide, { isLoading: updatingComplete }] =
+        useCompleteRideMutation();
     const [cancelRide] = useRejectRideMutation();
+    const [createPaymentUrl] = useCreatePaymentUrlMutation()
 
     const [successOpen, setSuccessOpen] = useState(false);
+    const [paymentOpen, setPaymentOpen] = useState(false);
 
     const activeRide = data?.data?.activeRide;
+
+    useEffect(() => {
+        if (activeRide?.status === "completed" && !activeRide?.paymentUrl) {
+            setPaymentOpen(true);
+        }
+    }, [activeRide?.status, activeRide?.paymentUrl]);
 
     if (isLoading) return <p>Loading ride...</p>;
     if (!activeRide) return <p>No active ride found.</p>;
@@ -36,10 +49,18 @@ export default function ActiveRide() {
 
     const handleUpdateStatus = async (newStatus: string) => {
         try {
-            const res = await updateRideStatus({
-                rideId: activeRide._id,
-                status: newStatus,
-            }).unwrap();
+            let res
+            if (newStatus == "completed") {
+                res = await completeRide({
+                    rideId: activeRide._id,
+                    status: newStatus,
+                }).unwrap();
+            } else {
+                res = await updateRideStatus({
+                    rideId: activeRide._id,
+                    status: newStatus,
+                }).unwrap();
+            }
 
             if (res?.data?.status === "completed") {
                 setSuccessOpen(true);
@@ -50,7 +71,6 @@ export default function ActiveRide() {
             toast.error(error?.data?.message || "Failed to update status");
         }
     };
-    console.log(activeRide)
 
     const handleCancelRide = () => {
         try {
@@ -59,6 +79,18 @@ export default function ActiveRide() {
             console.log(error)
         }
     }
+
+    const handlePaymentRequest = async () => {
+        try {
+            const res = await createPaymentUrl({ rideId: activeRide._id }).unwrap();
+            if (res?.data?.url) {
+                window.location.href = res.data.url; // redirect to gateway
+            }
+        } catch (err: any) {
+            toast.error("Failed to create payment link", err);
+        }
+    };
+
 
     return (
         <div className="container mx-auto px-4 py-8 space-y-6">
@@ -151,7 +183,7 @@ export default function ActiveRide() {
                                     className="w-full text-xs py-2"
                                     size="sm"
                                     onClick={() => handleUpdateStatus(status)}
-                                    disabled={!isNext || updating}
+                                    disabled={!isNext || updating || updatingComplete}
                                 >
                                     {isActive ? "Updated" : `Set to ${status.replace("_", " ")}`}
                                 </Button>
@@ -175,6 +207,18 @@ export default function ActiveRide() {
                 </div>
             )}
 
+            {/* ✅ Extra Payment Button */}
+            {currentStatus === "completed" && !activeRide.paymentUrl && (
+                <Button
+                    onClick={() => setPaymentOpen(true)}
+                    className="mt-4 bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-2"
+                >
+                    <CreditCard className="h-4 w-4" />
+                    Payment Request
+                </Button>
+            )}
+
+
             {/* ✅ Success Dialog */}
             <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
                 <DialogContent className="sm:max-w-md">
@@ -191,6 +235,29 @@ export default function ActiveRide() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
+
+            {/* ✅ Auto Payment Modal */}
+            <AlertDialog open={paymentOpen} onOpenChange={setPaymentOpen}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Completed Ride</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Your ride has been <span className="font-semibold">completed</span>.
+                            Please proceed with the payment of{" "}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel onClick={() => setPaymentOpen(false)}>Close</AlertDialogCancel>
+                        <AlertDialogAction
+                            className="bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-2"
+                            onClick={handlePaymentRequest}
+                        >
+                            <CreditCard className="h-4 w-4" />
+                            Payment Request
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 }
