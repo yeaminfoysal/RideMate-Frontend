@@ -18,6 +18,10 @@ export const withAuth = (Component: ComponentType, requiredRole: string) => {
             return <Navigate to={"/unauthorized"} />
         }
 
+        if (!isLoading && data.data.role == "DRIVER" && data.data.approvalStatus == "suspended") {
+            return <Navigate to={"/account-status"} />
+        }
+
         return <Component />
     }
 }

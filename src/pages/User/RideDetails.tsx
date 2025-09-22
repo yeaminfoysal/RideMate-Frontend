@@ -35,7 +35,7 @@ export default function RideDetails() {
             <p className="text-center text-muted-foreground">No ride details found.</p>
         );
     }
-
+console.log(data)
     return (
         <section className="container mx-auto px-4 py-8 space-y-6">
             {/* 🔙 Back button & Title */}

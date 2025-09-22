@@ -69,14 +69,13 @@ const Hero1 = () => {
                             )}
                         </div>
                     </div>
-                    <div className=" mx-auto relative">
-                        <div className="guten-2AM08B">
-
+                    <div className=" mx-auto relative md:mt-14 lg:mt-0">
+                        <div className="guten-2AM08B md:w-[350px] md:h-[350px] xl:w-[400px] lg:h-[400px] ">
                         </div>
                         <img
                             src={hero1}
                             alt={"Hero 1"}
-                            className="max-h-[505px] rounded-md  relative  animate-[float_3s_ease-in-out_infinite]"
+                            className="max-h-[405px] md:max-h-[455px] lg:max-h-[505px] rounded-md  relative  animate-[float_3s_ease-in-out_infinite]"
                         />
                     </div>
                 </div>

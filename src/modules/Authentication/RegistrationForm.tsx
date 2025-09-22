@@ -17,13 +17,14 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useRegisterMutation } from "@/redux/features/auth/authApi"
 import { Link, useNavigate } from "react-router"
+import { toast } from "sonner"
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, { message: "Password must be at least 6 characters." }),
     confirmPassword: z.string().min(6),
-    role: z.enum(["RIDER", "DRIVER"], {
+    role: z.enum(["USER", "DRIVER"], {
         error: "Role is required",
     }),
 }).refine((data) => data.password === data.confirmPassword, {
@@ -155,12 +156,12 @@ export function RegistrationForm({
                                                     <SelectValue placeholder="Select your role" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    <SelectItem value="RIDER">Rider</SelectItem>
+                                                    <SelectItem value="USER">Rider</SelectItem>
                                                     <SelectItem value="DRIVER">Driver</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </FormControl>
-                                        <FormMessage className="text-xs"/>
+                                        <FormMessage className="text-xs" />
                                     </FormItem>
                                 )}
                             />
@@ -177,8 +178,16 @@ export function RegistrationForm({
 
                             {/* Social logins */}
                             <div className="grid grid-cols-2 gap-4">
+
                                 <Button
-                                    onClick={() => window.open(`${import.meta.env.VITE_BASE_URL}/auth/google`)}
+                                    onClick={() => {
+                                        const selectedRole = form.getValues("role");
+                                        if (!selectedRole) {
+                                            toast.error("Please select a role before continuing with Google signup.");
+                                            return;
+                                        }
+                                        window.open(`${import.meta.env.VITE_BASE_URL}/auth/google?role=${selectedRole}`, "_self");
+                                    }}
                                     variant="outline"
                                     type="button"
                                     className="w-full"

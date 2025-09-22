@@ -14,17 +14,23 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { MapPin, Car, Phone, User, CreditCard } from "lucide-react";
+import { MapPin, Car, Phone, User, CreditCard, AlertTriangle } from "lucide-react";
 import RideMap from "@/modules/User/RideMap";
 import { useCreatePaymentUrlMutation } from "@/redux/features/payment/paymentApi";
 import { toast } from "sonner";
+import { useUserInfoQuery } from "@/redux/features/auth/authApi";
 
 export default function LiveRide() {
     const { data, isLoading, refetch } = useGetActiveRideQuery(undefined);
     const [cancelRide, { isLoading: isCancelling }] = useCancelRideMutation();
     const [cancelOpen, setCancelOpen] = useState(false);
     const [paymentOpen, setPaymentOpen] = useState(false);
-    const [createPaymentUrl] = useCreatePaymentUrlMutation()
+    const [sosOpen, setSosOpen] = useState(false);
+    const [createPaymentUrl] = useCreatePaymentUrlMutation();
+    const { data: userInfo } = useUserInfoQuery(undefined);
+
+    //   const emergencyEmail = userInfo?.data.emergencyContact?.email;
+    const emergencyPhone = userInfo?.data.emergencyContact?.phone;
 
     const activeRide = data?.data?.activeRide;
 
@@ -37,8 +43,7 @@ export default function LiveRide() {
     if (isLoading) return <p>Loading live ride...</p>;
     if (!activeRide) return <p>No ongoing ride right now.</p>;
 
-    const { _id, pickup, destination, fare, paymentMethod, status, driver, paymentUrl } =
-        activeRide;
+    const { _id, pickup, destination, fare, paymentMethod, status, driver, paymentUrl } = activeRide;
 
     const handleCancel = async () => {
         try {
@@ -55,7 +60,6 @@ export default function LiveRide() {
             toast.error("Ride ID is missing!");
             return;
         }
-
         const toastId = toast.loading("Processing payment...");
         try {
             if (paymentUrl) {
@@ -63,9 +67,7 @@ export default function LiveRide() {
                 toast.dismiss(toastId);
                 return;
             }
-
             const res = await createPaymentUrl(_id).unwrap();
-            console.log(res)
             if (res?.data.updatedPayment.paymentUrl) {
                 toast.success("Now you can make payment", { id: toastId });
                 window.location.href = res?.data.updatedPayment.paymentUrl;
@@ -78,9 +80,43 @@ export default function LiveRide() {
         }
     };
 
+    // ✅ Emergency actions
+    const getCurrentLocation = async (): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const { latitude, longitude } = pos.coords;
+                    resolve(`https://www.google.com/maps?q=${latitude},${longitude}`);
+                },
+                (err) => reject(err),
+                { enableHighAccuracy: true }
+            );
+        });
+    };
+
+    const notifyEmergencyContact = async () => {
+        try {
+            const locationUrl = await getCurrentLocation();
+            if (emergencyPhone) {
+                window.open(
+                    `https://wa.me/${emergencyPhone}?text=🚨 I need help! My live location: ${locationUrl}`,
+                    "_blank"
+                );
+                toast.success("Emergency contact notified via WhatsApp");
+            } else {
+                toast.error("No emergency phone number saved");
+            }
+        } catch (err: any) {
+            toast.error("Failed to get location", err);
+        }
+    };
+
+    const callPolice = () => {
+        window.location.href = "tel:999";
+    };
 
     return (
-        <div className="container mx-auto px-4 py-8 space-y-6">
+        <div className="container mx-auto px-4 py-8 space-y-6 relative">
             {/* Map */}
             <Card>
                 <CardHeader>
@@ -175,6 +211,7 @@ export default function LiveRide() {
                             </AlertDialogContent>
                         </AlertDialog>
                     )}
+
                     {/* ✅ Extra Payment Button */}
                     {status === "completed" && (
                         <Button
@@ -211,6 +248,49 @@ export default function LiveRide() {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+
+            {/* 🚨 Floating SOS Button */}
+            {status !== "completed" && status !== "canceled" && (
+                <>
+                    <button
+                        onClick={() => setSosOpen(true)}
+                        className="fixed bottom-6 right-6 z-50 p-4 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700"
+                    >
+                        <AlertTriangle className="h-6 w-6" />
+                    </button>
+
+                    <AlertDialog open={sosOpen} onOpenChange={setSosOpen}>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Emergency Options</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    Choose an emergency action:
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+
+                            {/* ✅ Custom layout for emergency buttons */}
+                            <div className="flex flex-col gap-3 mt-4">
+                                <Button
+                                    onClick={callPolice}
+                                    className="bg-red-600 hover:bg-red-700 text-white w-full"
+                                >
+                                    🚔 Call Police
+                                </Button>
+                                <Button
+                                    onClick={notifyEmergencyContact}
+                                    className="bg-yellow-500 hover:bg-yellow-600 text-white w-full"
+                                >
+                                    📞 Notify Emergency Contact
+                                </Button>
+                            </div>
+
+                            <AlertDialogFooter className="mt-4">
+                                <AlertDialogCancel className="w-full">Close</AlertDialogCancel>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </>
+            )}
         </div>
     );
 }

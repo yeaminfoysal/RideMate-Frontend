@@ -23,11 +23,11 @@ const ExperienceSection: React.FC = () => {
             <div className="relative z-10 container mx-auto px-6 text-center text-white">
                 {/* Heading */}
                 <span className="text-primary font-medium">Our Experience</span>
-                <h2 className="text-[50px] font-semibold mt-2 mb-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold mt-2 mb-4 leading-snug">
                     We Are Experienced Since 1992 Until Now
                     <span className="text-primary">.</span>
                 </h2>
-                <p className="text-gray-200 max-w-2xl mx-auto mb-20">
+                <p className="text-gray-200 max-w-2xl mx-auto mb-12 sm:mb-20 text-sm sm:text-base">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero
                     condimentum metus.
@@ -36,7 +36,7 @@ const ExperienceSection: React.FC = () => {
 
             {/* Stats Cards (absolute bottom) */}
 
-            <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 w-full max-w-6xl px-6">
+            <div className="lg:absolute lg:left-1/2 bottom-0 lg:transform lg:-translate-x-1/2 lg:translate-y-1/2 w-full max-w-6xl px-6 z-50">
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 

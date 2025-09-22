@@ -4,7 +4,7 @@ import phoneImage from "@/assets/mobile-apps.webp";
 export default function DownloadApp() {
     return (
         <section
-            className="relative py-10 px-6 md:px-12 bg-cover bg-top h-[401px] my-20"
+            className="relative py-10 px-6 md:px-12 bg-cover bg-top lg:h-[450px] my-20"
             style={{
                 backgroundImage: `url(${bgImage})`,
             }}
@@ -13,15 +13,15 @@ export default function DownloadApp() {
             <div className="absolute inset-0 bg-black/20"></div>
 
             {/* Content Wrapper */}
-            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
                 
                 {/* Phone Image Container */}
                 <div className="flex justify-center md:justify-end relative">
-                    <div className="relative w-full h-[500px] md:h-[600px] lg:h-[600px]">
+                    <div className="relative w-full h-[400px] md:h-[600px] lg:h-[600px]">
                         <img
                             src={phoneImage}
                             alt="Phone App Preview"
-                            className="absolute -top-20 md:-top-32 lg:-top-30 left-1/2 transform -translate-x-1/2 w-auto h-full max-w-none drop-shadow-2xl"
+                            className="md:absolute lg:-top-20 md:left-1/2 md:transform md:-translate-x-1/2  h-full md:max-w-none md:drop-shadow-2xl"
                         />
                     </div>
                 </div>

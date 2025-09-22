@@ -37,6 +37,10 @@ export default function ProfileManagement() {
     const { register: registerPassword, handleSubmit: handlePasswordSubmit } =
         useForm<{ currentPassword: string; newPassword: string }>();
 
+    // Profile form
+    const { register: registerEmergencyContact, handleSubmit: handleEmergencyContact } =
+        useForm<{ email: string; phone: string }>();
+
     // Driver Profile form
     const { register: registerDriver, handleSubmit: handleDriverSubmit } =
         useForm<{ licenseNumber: string; vehicle: string }>();
@@ -47,6 +51,23 @@ export default function ProfileManagement() {
         try {
             const res = await updateProfile(values).unwrap();
             if (res.success) toast.success("Profile updated successfully", { id: toastId });
+        } catch (error) {
+            console.log(error);
+            toast.error("Profile update failed", { id: toastId });
+        }
+    };
+
+    // Emergency Contact update handler
+    const onEmergencyContactUpdate = async (values: { email: string; phone: string }) => {
+        const emergencyContact = values
+
+
+        const toastId = toast.loading("Updating Emergency Contact...");
+        try {
+
+            const res = await updateProfile({ emergencyContact }).unwrap();
+            if (res.success) toast.success("Emergency Contact updated successfully", { id: toastId });
+
         } catch (error) {
             console.log(error);
             toast.error("Profile update failed", { id: toastId });
@@ -106,16 +127,16 @@ export default function ProfileManagement() {
                 <CardContent className="space-y-3 text-sm">
                     <div className="flex items-center gap-2">
                         <Mail className="h-4 w-4 text-muted-foreground" />
-                        <span>Email: {profile.email}</span>
+                        <span>Email: {profile?.email}</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <Shield className="h-4 w-4 text-muted-foreground" />
-                        <span>Role: {profile.role}</span>
+                        <span>Role: {profile?.role}</span>
                     </div>
                     {profile.role == "DRIVER" && (
                         <div className="flex items-center gap-2">
                             <Shield className="h-4 w-4 text-muted-foreground" />
-                            <span>Approval Status: {driverProfile?.data.approvalStatus}</span>
+                            <span>Approval Status: {driverProfile?.data?.approvalStatus}</span>
                         </div>
                     )}
                 </CardContent>
@@ -124,11 +145,12 @@ export default function ProfileManagement() {
             {/* Tabs for Editing */}
             <Tabs defaultValue="profile" className="w-full">
                 <TabsList
-                    className={`grid ${profile.role === "DRIVER" ? "grid-cols-3" : "grid-cols-2"
-                        } md:w-[500px]`}
+                    className={`grid ${profile?.role === "DRIVER" ? "grid-cols-4" : "grid-cols-3"
+                        } md:w-[650px]`}
                 >
                     <TabsTrigger value="profile">Edit Profile</TabsTrigger>
                     <TabsTrigger value="password">Change Password</TabsTrigger>
+                    <TabsTrigger value="emergencyContact">Emergency Contact</TabsTrigger>
                     {profile.role === "DRIVER" && (
                         <TabsTrigger value="driver">Driver Profile</TabsTrigger>
                     )}
@@ -206,6 +228,47 @@ export default function ProfileManagement() {
 
                                 <Button type="submit" className="w-full">
                                     Update Password
+                                </Button>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+
+                {/* Emergency Contact */}
+                <TabsContent value="emergencyContact">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Emergency Contact</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <form
+                                onSubmit={handleEmergencyContact(onEmergencyContactUpdate)}
+                                className="space-y-4"
+                            >
+                                <div className="space-y-2">
+                                    <Label htmlFor="name">Email</Label>
+                                    <Input
+                                        id="email"
+                                        defaultValue={profile?.emergencyContact?.email}
+                                        {...registerEmergencyContact("email")}
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="phone">Phone</Label>
+                                    <div className="flex items-center gap-2">
+                                        <Phone className="h-4 w-4 text-muted-foreground" />
+                                        <Input
+                                            id="phone"
+                                            defaultValue={profile?.emergencyContact?.phone}
+                                            placeholder="Enter phone number"
+                                            {...registerEmergencyContact("phone")}
+                                        />
+                                    </div>
+                                </div>
+
+                                <Button type="submit" className="w-full">
+                                    Save Changes
                                 </Button>
                             </form>
                         </CardContent>

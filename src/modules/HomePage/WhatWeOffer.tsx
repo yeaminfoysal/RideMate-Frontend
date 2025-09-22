@@ -2,20 +2,24 @@ import WeOfferCard from "./WeOfferCard";
 
 export default function WhatWeOffer() {
     return (
-        <div className="py-14 container mx-auto">
-            <p className="text-primary items-center text-center text-lg">What We Offer</p>
-            <h2 className="text-[50px] font-semibold text-center">We Offer The Best For You</h2>
+        <div className="py-14 px-4 sm:px-6 lg:px-20 container mx-auto">
+            <p className="text-primary text-center text-lg">What We Offer</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-center mt-2">
+                We Offer The Best For You
+            </h2>
 
-            <p className="text-center max-w-[700px] mx-auto mt-[10px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero condimentum metus.</p>
-            <div className="mt-[50px] flex items-center justify-between gap-[20px] px-20">
+            <p className="text-center max-w-[700px] mx-auto mt-4 sm:mt-6 text-sm sm:text-base">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero condimentum metus.
+            </p>
 
+            <div className="mt-10 flex flex-wrap justify-center gap-6">
                 <WeOfferCard
                     title="Support All Payment"
                     desc="Lorem ipsum dolor sit amet."
                     bgMain="bg-[#212121]"
                     textClr="text-white"
                     bgIcon="bg-primary"
-                    mainIcon={"https://img.icons8.com/?size=100&id=85801&format=png&color=000000"}
+                    mainIcon="https://img.icons8.com/?size=100&id=85801&format=png&color=000000"
                     icon1="https://img.icons8.com/?size=100&id=87505&format=png&color=ffffff"
                     icon2="https://img.icons8.com/?size=100&id=zssVYAAiltQy&format=png&color=ffffff"
                     icon3="https://img.icons8.com/?size=100&id=Vr5TGbc9C4Ma&format=png&color=ffffff"
@@ -27,7 +31,7 @@ export default function WhatWeOffer() {
                     desc="Lorem ipsum dolor sit amet."
                     bgMain="bg-primary"
                     bgIcon="bg-black"
-                    mainIcon={"https://img.icons8.com/?size=100&id=10483&format=png&color=FCC419"}
+                    mainIcon="https://img.icons8.com/?size=100&id=10483&format=png&color=FCC419"
                     icon1="https://img.icons8.com/?size=100&id=59751&format=png&color=000000"
                     icon2="https://img.icons8.com/?size=100&id=HtoPj7ftiHFM&format=png&color=000000"
                     icon1Text="Guarantee"
@@ -39,15 +43,12 @@ export default function WhatWeOffer() {
                     desc="Lorem ipsum dolor sit amet."
                     bgMain="bg-white"
                     bgIcon="bg-primary"
-                    mainIcon={"https://img.icons8.com/?size=100&id=11474&format=png&color=000000"}
+                    mainIcon="https://img.icons8.com/?size=100&id=11474&format=png&color=000000"
                     icon1="https://img.icons8.com/?size=100&id=95294&format=png&color=fdb813"
                     icon1Text="Apple"
                     icon2="https://img.icons8.com/?size=100&id=C0IckHPpZZCE&format=png&color=fdb813"
                     icon2Text="Android"
                 />
-
-                {/* <WeOfferCard />
-                <WeOfferCard /> */}
             </div>
         </div>
     )

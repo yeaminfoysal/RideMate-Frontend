@@ -128,8 +128,8 @@
 
 .guten-2AM08B {
     background: linear-gradient(135deg, rgba(253, 184, 19, 1) 0%, rgba(0, 0, 0, 0) 100%);
-    width: 400px ;
-    height: 400px ;
+    /* width: 400px ;
+    height: 400px ; */
     display: inline-block;
     position: absolute !important;
     transform-origin: center center;

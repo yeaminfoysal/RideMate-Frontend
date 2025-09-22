@@ -41,7 +41,7 @@ const reviews: Review[] = [
 const CustomerReviews: React.FC = () => {
   return (
     <section
-      className="relative bg-cover bg-center bg-no-repeat py-20 pb-80 mb-26"
+      className="relative bg-cover bg-center bg-no-repeat py-20 pb-80 lg:mb-46"
       style={{
         backgroundImage:
           "url('https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/glowing-london-taxi-light.webp')",
@@ -64,7 +64,7 @@ const CustomerReviews: React.FC = () => {
       </div>
 
       {/* Cards */}
-      <div className="absolute top-36 left-40 z-20 max-w-6xl mx-auto mt-16 flex flex-col md:flex-row gap-6 justify-center px-4">
+      <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 w-full z-20 max-w-6xl mx-auto mt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 justify-center px-4">
         {reviews.map((review) => (
           <div
             key={review.id}

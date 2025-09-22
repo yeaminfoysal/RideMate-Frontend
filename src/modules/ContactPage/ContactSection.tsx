@@ -47,7 +47,7 @@ export function ContactSection() {
 
     return (
         <section className="py-20">
-            <div className="container mx-auto grid lg:grid-cols-2 gap-16 items-start">
+            <div className="px-6 container mx-auto grid lg:grid-cols-2 gap-16 items-start">
                 {/* Left Info */}
                 <div className="space-y-6">
                     <h2 className="text-[50px] font-semibold">

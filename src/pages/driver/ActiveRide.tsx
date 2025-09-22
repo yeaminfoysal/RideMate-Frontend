@@ -15,10 +15,11 @@ import {
 } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { CreditCard, MapPin } from "lucide-react";
+import { AlertTriangle, CreditCard, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { useCreatePaymentUrlMutation } from "@/redux/features/payment/paymentApi";
+import { useUserInfoQuery } from "@/redux/features/auth/authApi";
 
 const rideStatuses = ["accepted", "picked_up", "in_transit", "completed"];
 
@@ -29,10 +30,12 @@ export default function ActiveRide() {
     const [completeRide, { isLoading: updatingComplete }] =
         useCompleteRideMutation();
     const [cancelRide] = useRejectRideMutation();
-    const [createPaymentUrl] = useCreatePaymentUrlMutation()
+    const [createPaymentUrl] = useCreatePaymentUrlMutation();
+    const { data: userInfo } = useUserInfoQuery(undefined);
 
     const [successOpen, setSuccessOpen] = useState(false);
     const [paymentOpen, setPaymentOpen] = useState(false);
+    const [sosOpen, setSosOpen] = useState(false);
 
     const activeRide = data?.data?.activeRide;
 
@@ -46,6 +49,7 @@ export default function ActiveRide() {
     if (!activeRide) return <p>No active ride found.</p>;
 
     const currentStatus = activeRide.status;
+    const emergencyPhone = userInfo?.data.emergencyContact?.phone;
 
     const handleUpdateStatus = async (newStatus: string) => {
         try {
@@ -89,6 +93,41 @@ export default function ActiveRide() {
         } catch (err: any) {
             toast.error("Failed to create payment link", err);
         }
+    };
+
+    // ✅ Emergency actions
+    const getCurrentLocation = async (): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const { latitude, longitude } = pos.coords;
+                    resolve(`https://www.google.com/maps?q=${latitude},${longitude}`);
+                },
+                (err) => reject(err),
+                { enableHighAccuracy: true }
+            );
+        });
+    };
+
+    const notifyEmergencyContact = async () => {
+        try {
+            const locationUrl = await getCurrentLocation();
+            if (emergencyPhone) {
+                window.open(
+                    `https://wa.me/${emergencyPhone}?text=🚨 I need help! My live location: ${locationUrl}`,
+                    "_blank"
+                );
+                toast.success("Emergency contact notified via WhatsApp");
+            } else {
+                toast.error("No emergency phone number saved");
+            }
+        } catch (err: any) {
+            toast.error("Failed to get location", err);
+        }
+    };
+
+    const callPolice = () => {
+        window.location.href = "tel:999";
     };
 
 
@@ -258,6 +297,49 @@ export default function ActiveRide() {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+
+            {/* 🚨 Floating SOS Button */}
+            {currentStatus !== "completed" && currentStatus !== "canceled" && (
+                <>
+                    <button
+                        onClick={() => setSosOpen(true)}
+                        className="fixed bottom-6 right-6 z-50 p-4 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700"
+                    >
+                        <AlertTriangle className="h-6 w-6" />
+                    </button>
+
+                    <AlertDialog open={sosOpen} onOpenChange={setSosOpen}>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Emergency Options</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    Choose an emergency action:
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+
+                            {/* ✅ Custom layout for emergency buttons */}
+                            <div className="flex flex-col gap-3 mt-4">
+                                <Button
+                                    onClick={callPolice}
+                                    className="bg-red-600 hover:bg-red-700 text-white w-full"
+                                >
+                                    🚔 Call Police
+                                </Button>
+                                <Button
+                                    onClick={notifyEmergencyContact}
+                                    className="bg-yellow-500 hover:bg-yellow-600 text-white w-full"
+                                >
+                                    📞 Notify Emergency Contact
+                                </Button>
+                            </div>
+
+                            <AlertDialogFooter className="mt-4">
+                                <AlertDialogCancel className="w-full">Close</AlertDialogCancel>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </>
+            )}
         </div>
     );
 }
