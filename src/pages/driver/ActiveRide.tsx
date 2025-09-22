@@ -25,13 +25,13 @@ const rideStatuses = ["accepted", "picked_up", "in_transit", "completed"];
 
 export default function ActiveRide() {
     const { data, isLoading } = useGetActiveRideQuery(undefined);
+    const { data: userInfo } = useUserInfoQuery(undefined);
     const [updateRideStatus, { isLoading: updating }] =
         useUpdateRideStatusMutation();
     const [completeRide, { isLoading: updatingComplete }] =
         useCompleteRideMutation();
     const [cancelRide] = useRejectRideMutation();
     const [createPaymentUrl] = useCreatePaymentUrlMutation();
-    const { data: userInfo } = useUserInfoQuery(undefined);
 
     const [successOpen, setSuccessOpen] = useState(false);
     const [paymentOpen, setPaymentOpen] = useState(false);

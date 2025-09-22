@@ -40,7 +40,6 @@ export function ContactSection() {
     function onSubmit(data: ContactFormValues) {
         console.log("Simulated submission:", data);
 
-        // 👉 এখানে simulated submission
         toast.success("Your message has been sent successfully (simulated)!");
         form.reset();
     }

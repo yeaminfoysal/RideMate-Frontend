@@ -143,11 +143,11 @@ export default function IncomingRequestsPage() {
                                 <CardTitle className="flex items-center justify-between text-lg text-gray-900 dark:text-gray-100">
                                     <span className="flex items-center gap-2">
                                         <User className="w-5 h-5 text-blue-500 dark:text-blue-400" />
-                                        {ride.rider.name}
+                                        {ride?.rider?.name}
                                     </span>
                                     <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-semibold">
                                         <DollarSign className="w-5 h-5" />
-                                        {ride.fare} BDT
+                                        {ride?.fare} BDT
                                     </span>
                                 </CardTitle>
                             </CardHeader>
@@ -155,30 +155,30 @@ export default function IncomingRequestsPage() {
                             <CardContent className="space-y-4">
                                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                                     <MapPin className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
-                                    <span>{ride.pickup.address}</span>
+                                    <span>{ride?.pickup?.address}</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                                     <ArrowRight className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                                    <span>{ride.destination.address}</span>
+                                    <span>{ride?.destination?.address}</span>
                                 </div>
 
                                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <Clock className="w-4 h-4" />
-                                    {new Date(ride.requestedAt).toLocaleString()}
+                                    {new Date(ride?.requestedAt).toLocaleString()}
                                 </div>
 
                                 <div className="flex justify-between mt-4">
                                     <Button
                                         className="bg-green-600 hover:bg-green-700 text-white dark:bg-green-500 dark:hover:bg-green-600"
                                         disabled={isAccepting}
-                                        onClick={() => handleAction(ride._id, "accepted")}
+                                        onClick={() => handleAction(ride?._id, "accepted")}
                                     >
                                         {isAccepting ? "Accepting..." : "Accept"}
                                     </Button>
                                     <Button
                                         variant="destructive"
                                         disabled={isRejecting}
-                                        onClick={() => handleAction(ride._id, "rejected")}
+                                        onClick={() => handleAction(ride?._id, "rejected")}
                                     >
                                         {isRejecting ? "Rejecting..." : "Reject"}
                                     </Button>
