@@ -19,18 +19,25 @@ import { useRegisterMutation } from "@/redux/features/auth/authApi"
 import { Link, useNavigate } from "react-router"
 import { toast } from "sonner"
 
-const formSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(6, { message: "Password must be at least 6 characters." }),
-    confirmPassword: z.string().min(6),
-    role: z.enum(["USER", "DRIVER"], {
-        error: "Role is required",
-    }),
-}).refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passwords do not match",
-})
+const formSchema = z
+    .object({
+        name: z.string().min(2, "Name must be at least 2 characters"),
+        email: z.string().email("Invalid email address"),
+        password: z
+            .string()
+            .min(8, "Password must be at least 8 characters")
+            .regex(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                "Password must contain uppercase, lowercase, number, and special character"
+            ),
+        confirmPassword: z.string(),
+        role: z.enum(["USER", "DRIVER"], { error: "Role is required", }),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+        path: ["confirmPassword"],
+        message: "Passwords do not match",
+    });
+
 
 export function RegistrationForm({
     className,
@@ -51,11 +58,14 @@ export function RegistrationForm({
     })
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        const toastId = toast.loading("Registering....")
         try {
             await registerUser(data).unwrap()
+            toast.success("Registeration successfull", { id: toastId })
             navigate("/login")
         } catch (err: any) {
             console.error(err)
+            toast.error(err.data.message, { id: toastId })
         }
     }
 

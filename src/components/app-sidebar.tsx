@@ -40,17 +40,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        {isDriver && (
-          <div className="flex items-center justify-between p-2">
-            <span className="text-sm font-medium">Online</span>
-            <Switch
-              checked={isOnline}
-              onCheckedChange={handleToggle}
-            />
-          </div>
-        )}
+        <div>
+          {isDriver && (
+            <div className="flex items-center justify-between p-2">
+              <span className="text-sm font-medium">Online</span>
+              <Switch
+                checked={isOnline}
+                onCheckedChange={handleToggle}
+              />
+            </div>
+          )}
+        </div>
+        <div className="px-2 text-sm pt-8">
+          <Link to="/">Home</Link>
+        </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="space-y-4">
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>

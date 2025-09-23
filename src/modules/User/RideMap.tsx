@@ -104,7 +104,7 @@ const RideMap: React.FC<RouteProps> = ({ pickup, destination }) => {
   };
 
   return (
-    <div className="w-full h-[500px] rounded-lg overflow-hidden border border-gray-300">
+    <div className="w-full h-[500px] rounded-lg overflow-hidden border">
       <Map
         ref={mapRef}
         {...viewState}

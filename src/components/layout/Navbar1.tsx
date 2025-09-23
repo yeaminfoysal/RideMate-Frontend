@@ -1,4 +1,5 @@
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Menu } from "lucide-react";
+// import { Book, Sunset, Trees, Zap } from "lucide-react";
 
 import {
     Accordion,
@@ -60,43 +61,43 @@ const Navbar1 = ({
         { title: "Dashboard", url: "/user", role: "USER" },
         { title: "Dashboard", url: "/driver", role: "DRIVER" },
         { title: "Dashboard", url: "/admin", role: "ADMIN" },
-        {
-            title: "Products",
-            url: "#",
-            role: "PUBLIC",
-            items: [
-                {
-                    title: "Blog",
-                    description: "The latest industry news, updates, and info",
-                    icon: <Book className="size-5 shrink-0" />,
-                    url: "#",
-                },
-                {
-                    title: "Company",
-                    description: "Our mission is to innovate and empower the world",
-                    icon: <Trees className="size-5 shrink-0" />,
-                    url: "#",
-                },
-                {
-                    title: "Careers",
-                    description: "Browse job listing and discover our workspace",
-                    icon: <Sunset className="size-5 shrink-0" />,
-                    url: "#",
-                },
-                {
-                    title: "Support",
-                    description:
-                        "Get in touch with our support team or visit our community forums",
-                    icon: <Zap className="size-5 shrink-0" />,
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Pricing",
-            url: "#",
-            role: "PUBLIC",
-        },
+        // {
+        //     title: "Products",
+        //     url: "#",
+        //     role: "PUBLIC",
+        //     items: [
+        //         {
+        //             title: "Blog",
+        //             description: "The latest industry news, updates, and info",
+        //             icon: <Book className="size-5 shrink-0" />,
+        //             url: "#",
+        //         },
+        //         {
+        //             title: "Company",
+        //             description: "Our mission is to innovate and empower the world",
+        //             icon: <Trees className="size-5 shrink-0" />,
+        //             url: "#",
+        //         },
+        //         {
+        //             title: "Careers",
+        //             description: "Browse job listing and discover our workspace",
+        //             icon: <Sunset className="size-5 shrink-0" />,
+        //             url: "#",
+        //         },
+        //         {
+        //             title: "Support",
+        //             description:
+        //                 "Get in touch with our support team or visit our community forums",
+        //             icon: <Zap className="size-5 shrink-0" />,
+        //             url: "#",
+        //         },
+        //     ],
+        // },
+        // {
+        //     title: "Pricing",
+        //     url: "#",
+        //     role: "PUBLIC",
+        // },
     ],
 }: Navbar1Props) => {
 
@@ -124,7 +125,7 @@ const Navbar1 = ({
 
     return (
         <section className="pt-4">
-            <div className="container mx-auto border-2 rounded-2xl bg-background px-4 py-3 border-primary/30">
+            <div className="container mx-auto border-2 rounded-2xl bg-background px-4 lg:py-3 md:py-1 border-primary/30">
                 {/* Desktop Menu */}
                 <nav className="hidden justify-between lg:flex">
                     <div className="flex items-center gap-6">

@@ -164,8 +164,8 @@ export default function RideHistory() {
                             key={ride._id}
                             className="hover:shadow-lg transition border rounded-lg"
                         >
-                            <CardHeader className="flex flex-row justify-between items-center">
-                                <CardTitle className="text-lg flex items-center gap-2">
+                            <CardHeader className="flex flex-col sm:flex-row justify-between items-center">
+                                <CardTitle className="text-sm sm:text-lg flex items-center gap-2">
                                     <MapPin className="h-5 w-5 text-green-500" /> {ride.pickup.address}
                                     <span className="mx-2">→</span>
                                     <MapPin className="h-5 w-5 text-red-500" /> {ride.destination.address}

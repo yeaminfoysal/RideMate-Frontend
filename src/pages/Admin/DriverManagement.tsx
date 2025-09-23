@@ -44,7 +44,7 @@ export default function DriverManagement() {
                 </CardHeader>
                 <CardContent>
                     {/* Filters */}
-                    <div className="flex gap-4 mb-4">
+                    <div className="flex flex-wrap sm:flex-nowrap gap-4 mb-4">
                         <Input
                             placeholder="Search drivers..."
                             value={search}

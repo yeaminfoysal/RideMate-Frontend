@@ -33,8 +33,7 @@ export default function DownloadApp() {
                         Download RideMate App <br /> From Your Gadget<span className="text-yellow-400">.</span>
                     </h2>
                     <p className="text-gray-300 mb-8">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
-                        ullamcorper mattis, pulvinar dapibus leo.
+                        Get the RideMate app on your device and enjoy fast, safe, and hassle-free rides anytime, anywhere.
                     </p>
 
                     {/* Store Buttons */}

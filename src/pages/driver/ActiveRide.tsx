@@ -219,12 +219,12 @@ export default function ActiveRide() {
                             {/* Action Button */}
                             <div className="mt-4 w-full px-2">
                                 <Button
-                                    className="w-full text-xs py-2"
+                                    className="w-full text-[10px] sm:text-xs py-2"
                                     size="sm"
                                     onClick={() => handleUpdateStatus(status)}
                                     disabled={!isNext || updating || updatingComplete}
                                 >
-                                    {isActive ? "Updated" : `Set to ${status.replace("_", " ")}`}
+                                    {isActive ? "Updated" : `Set ${status.replace("_", " ")}`}
                                 </Button>
                             </div>
                         </div>

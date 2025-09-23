@@ -28,9 +28,7 @@ const ExperienceSection: React.FC = () => {
                     <span className="text-primary">.</span>
                 </h2>
                 <p className="text-gray-200 max-w-2xl mx-auto mb-12 sm:mb-20 text-sm sm:text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero
-                    condimentum metus.
+                    With decades of trusted service since 1992, RideMate continues to deliver safe, reliable, and quality rides worldwide.
                 </p>
             </div>
 

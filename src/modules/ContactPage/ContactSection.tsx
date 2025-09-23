@@ -53,7 +53,7 @@ export function ContactSection() {
                         Get in <span className="text-primary">Touch.</span>
                     </h2>
                     <p className="text-muted-foreground">
-                        Lorem ipsum dolor sit amet consectetuer adipiscing elit. Aenean commodo ligula eget dolor. dolor sit amet consectetuer adipiscing elit.
+                        We’re here to help! Reach out with any questions, feedback, or support requests, and we’ll respond promptly.
                     </p>
 
                     <div className="space-y-8">
@@ -139,7 +139,7 @@ export function ContactSection() {
                                         <FormItem>
                                             <FormLabel>Email</FormLabel>
                                             <FormControl>
-                                                <Input className="h-16"  placeholder="Your Email" {...field} />
+                                                <Input className="h-16" placeholder="Your Email" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -154,7 +154,7 @@ export function ContactSection() {
                                     <FormItem>
                                         <FormLabel>Subject</FormLabel>
                                         <FormControl>
-                                            <Input className="h-16"  placeholder="Subject" {...field} />
+                                            <Input className="h-16" placeholder="Subject" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -168,7 +168,7 @@ export function ContactSection() {
                                     <FormItem>
                                         <FormLabel>Message</FormLabel>
                                         <FormControl>
-                                            <Textarea className="h-30"  rows={5} placeholder="Message" {...field} />
+                                            <Textarea className="h-30" rows={5} placeholder="Message" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

@@ -9,13 +9,13 @@ export default function WhatWeOffer() {
             </h2>
 
             <p className="text-center max-w-[700px] mx-auto mt-4 sm:mt-6 text-sm sm:text-base">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero condimentum metus.
+                Discover our range of top-quality services designed to bring you comfort, reliability, and convenience. We are committed to offering the very best, tailored just for you.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-6">
                 <WeOfferCard
                     title="Support All Payment"
-                    desc="Lorem ipsum dolor sit amet."
+                    desc="Seamless transactions with every payment method"
                     bgMain="bg-[#212121]"
                     textClr="text-white"
                     bgIcon="bg-primary"
@@ -28,7 +28,7 @@ export default function WhatWeOffer() {
                 <WeOfferCard
                     title="Safety First"
                     textClr="text-black"
-                    desc="Lorem ipsum dolor sit amet."
+                    desc="Prioritizing your security on every ride"
                     bgMain="bg-primary"
                     bgIcon="bg-black"
                     mainIcon="https://img.icons8.com/?size=100&id=10483&format=png&color=FCC419"
@@ -40,7 +40,7 @@ export default function WhatWeOffer() {
                 <WeOfferCard
                     title="100% Digital"
                     textClr="text-black"
-                    desc="Lorem ipsum dolor sit amet."
+                    desc="Fully digital experience, fast and paperless"
                     bgMain="bg-white"
                     bgIcon="bg-primary"
                     mainIcon="https://img.icons8.com/?size=100&id=11474&format=png&color=000000"

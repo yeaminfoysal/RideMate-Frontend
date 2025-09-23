@@ -20,8 +20,7 @@ export default function AboutSection() {
           Trusted Cab Services In All Over The <span className="text-primary">World.</span>
         </h2>
         <p className="text-gray-600 mb-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor.
-          Aenean massa. Cum sociis natoque penatibus.
+        RideMate is your reliable travel partner, delivering safe, comfortable, and trusted cab services across the globe.
         </p>
 
         {/* Service Items */}
@@ -33,19 +32,19 @@ export default function AboutSection() {
             <div>
               <h3 className="text-lg font-semibold">Long Distance Trip</h3>
               <p className="text-gray-600 text-sm">
-                Lorem ipsum dolor sit amet, consect adipiscing elit, sed do tempor incididunt labore.
+                Comfortable rides for your longer journeys.
               </p>
             </div>
           </div>
 
-          <div className="flex gap-4 items-start">
+          <div className="flex gap-4 items-center">
             <div className="bg-primary text-black p-4 rounded-lg">
               <Car className="w-8 h-8" />
             </div>
             <div>
               <h3 className="text-lg font-semibold">Taxi Tour Services</h3>
               <p className="text-gray-600 text-sm">
-                Lorem ipsum dolor sit amet, consect adipiscing elit, sed do tempor incididunt labore.
+                Flexible options with cars and bikes.
               </p>
             </div>
           </div>

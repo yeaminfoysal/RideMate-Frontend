@@ -61,7 +61,7 @@ const RideBook = () => {
   if (userInfo?.data.activeRide) return (<Navigate to={"/user/live-ride"}></Navigate>)
 
   return (
-    <div className="p-10 mx-auto mt-10 space-y-4 grid grid-cols-2 gap-10 w-full">
+    <div className="p-10 mx-auto mt-10 space-y-4 grid grid-cols-1 lg:grid-cols-2 gap-10 w-full">
       <div className="space-y-4">
         <h1 className="text-[50px] font-semibold">Get ready for your ride</h1>
         <p className="mb-10">

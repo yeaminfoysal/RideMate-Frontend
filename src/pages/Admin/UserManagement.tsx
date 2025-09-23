@@ -59,7 +59,7 @@ export default function UserManagement() {
         </CardHeader>
         <CardContent>
           {/* Filters */}
-          <div className="flex gap-4 mb-4">
+          <div className="flex flex-wrap sm:flex-nowrap  gap-4 mb-4">
             <Input
               placeholder="Search users..."
               value={search}
@@ -67,7 +67,7 @@ export default function UserManagement() {
             />
 
             <Select onValueChange={(v) => setRole(v === "all" ? undefined : v)}>
-              <SelectTrigger className="w-[150px]">
+              <SelectTrigger className="w-[130px] sm:w-[150px]">
                 <SelectValue placeholder="Filter by role" />
               </SelectTrigger>
               <SelectContent>
@@ -82,7 +82,7 @@ export default function UserManagement() {
                 setIsBlocked(v === "all" ? undefined : v === "true")
               }
             >
-              <SelectTrigger className="w-[150px]">
+              <SelectTrigger className="w-[130px] sm:w-[150px]">
                 <SelectValue placeholder="Blocked/Unblocked" />
               </SelectTrigger>
               <SelectContent>

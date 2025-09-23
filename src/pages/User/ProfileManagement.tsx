@@ -145,14 +145,14 @@ export default function ProfileManagement() {
             {/* Tabs for Editing */}
             <Tabs defaultValue="profile" className="w-full">
                 <TabsList
-                    className={`grid ${profile?.role === "DRIVER" ? "grid-cols-4" : "grid-cols-3"
+                    className={`grid ${profile?.role === "DRIVER" ? "grid-cols-4" : "grid-cols-3 "
                         } md:w-[650px]`}
                 >
-                    <TabsTrigger value="profile">Edit Profile</TabsTrigger>
-                    <TabsTrigger value="password">Change Password</TabsTrigger>
-                    <TabsTrigger value="emergencyContact">Emergency Contact</TabsTrigger>
+                    <TabsTrigger className="text-xs sm:text-[16px]" value="profile">Edit Profile</TabsTrigger>
+                    <TabsTrigger className="text-xs sm:text-[16px]" value="password">Password</TabsTrigger>
+                    <TabsTrigger className="text-xs sm:text-[16px]" value="emergencyContact">Emergency <span className="hidden sm:block">Contact</span></TabsTrigger>
                     {profile.role === "DRIVER" && (
-                        <TabsTrigger value="driver">Driver Profile</TabsTrigger>
+                        <TabsTrigger className="text-xs sm:text-[16px]"  value="driver">Driver Profile</TabsTrigger>
                     )}
                 </TabsList>
 

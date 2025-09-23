@@ -167,7 +167,7 @@ export default function RideOversight() {
                             key={ride._id}
                             className="hover:shadow-lg transition border rounded-lg"
                         >
-                            <CardHeader className="flex flex-row justify-between items-center">
+                            <CardHeader className="flex flex-col sm:flex-row  justify-between items-center">
                                 <CardTitle className="text-lg flex items-center gap-2">
                                     <MapPin className="h-5 w-5 text-green-500" /> {ride.pickup.address}
                                     <span className="mx-2">→</span>

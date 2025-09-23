@@ -35,7 +35,7 @@ const blogPosts = [
   {
     title: "A Variety Of Safe Taxi Services On Your Way",
     description:
-      "Lorem ipsum dolor amet, elit aenean commodo ligula eget dolor aenean massa. Cum sociis natoque penatibus et...",
+      "RideMate made my trip stress-free, with a professional driver and smooth, comfortable ride experience throughout....",
     image:
       "https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/taxi-sign.webp",
     tag: "Booking",
@@ -43,15 +43,15 @@ const blogPosts = [
   {
     title: "How Go Get Discount With Your Mobile App",
     description:
-      "Lorem ipsum dolor amet, elit aenean commodo ligula eget dolor aenean massa. Cum sociis natoque penatibus et...",
+      "Booking is simple, the cab arrived quickly, and the service felt safe, reliable, and affordable....",
     image:
       "https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/taxi-african-woman-using-phone-on-back-seat.webp",
     tag: "Discount",
   },
   {
-    title: "10 Tips to Catch a Taxi in Your City Easily",
+    title: "10 Tips to Catch a car or bike in Your City Easily",
     description:
-      "Lorem ipsum dolor amet, elit aenean commodo ligula eget dolor aenean massa. Cum sociis natoque penatibus et...",
+      "You love so convenient RideMate is—fast rides, friendly drivers, and excellent support every single time....",
     image:
       "https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/calling-a-taxi-with-phone.webp",
     tag: "Services",

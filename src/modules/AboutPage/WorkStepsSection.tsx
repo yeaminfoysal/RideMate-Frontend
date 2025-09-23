@@ -12,30 +12,30 @@ const steps: Step[] = [
   {
     icon: "https://img.icons8.com/?size=100&id=nCEJ53k3fryj&format=png&color=fdb80f",
     title: "Booking a Vehicle",
-    description: "Lorem ipsum dolor sit amet, conscte adipisc elit.",
+    description: "Select your ride quickly and easily.",
     bg: "bg-foreground",
     text: "text-white",
   },
   {
     icon: "https://img.icons8.com/?size=100&id=qPjaEaXbpSKm&format=png&color=fdb80f",
     title: "Get a Driver",
-    description: "Lorem ipsum dolor sit amet, conscte adipisc elit.",
+    description: "A professional driver arrives at your location.",
     bg: "bg-white",
-  },
-  {
-    icon: "https://img.icons8.com/?size=100&id=5dSgwauapeOo&format=png&color=000000",
-    title: "Pay your Taxi",
-    description: "Lorem ipsum dolor sit amet, conscte adipisc elit.",
-    bg: "bg-yellow-400",
-    text: "text-foreground",
   },
   {
     icon: "https://img.icons8.com/?size=100&id=u3c2ImZFIynC&format=png&color=fdb80f",
     title: "Enjoy your Ride",
-    description: "Lorem ipsum dolor sit amet, conscte adipisc elit.",
+    description: "Relax while we take you to destination.",
     bg: "bg-foreground",
     text: "text-white",
   },
+  {
+    icon: "https://img.icons8.com/?size=100&id=5dSgwauapeOo&format=png&color=000000",
+    title: "Pay your Taxi",
+    description: "Safe and simple payment after your trip.",
+    bg: "bg-yellow-400",
+    text: "text-foreground",
+  }
 ];
 
 const WorkSteps: React.FC = () => {
@@ -48,9 +48,7 @@ const WorkSteps: React.FC = () => {
           Easy Step For Book Your Taxi<span className="text-primary">.</span>
         </h2>
         <p className="text-foreground/70 max-w-2xl mx-auto mb-12">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero
-          condimentum metus.
+          Booking your ride is simple and quick—just follow a few easy steps to get moving hassle-free. Enjoy a smooth, stress-free experience every time you travel with us.
         </p>
 
         {/* Steps */}
@@ -66,9 +64,8 @@ const WorkSteps: React.FC = () => {
             >
               {/* Icon wrapper */}
               <div
-                className={`w-20 h-20 flex items-center justify-center rounded-xl shadow-md ${step.bg} ${
-                  step.text ?? "text-foreground"
-                }`}
+                className={`w-20 h-20 flex items-center justify-center rounded-xl shadow-md ${step.bg} ${step.text ?? "text-foreground"
+                  }`}
               >
                 <img src={step.icon} alt={step.title} className="w-12 h-12" />
               </div>

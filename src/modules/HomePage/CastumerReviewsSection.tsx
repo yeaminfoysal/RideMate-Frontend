@@ -16,7 +16,7 @@ const reviews: Review[] = [
     image:
       "https://randomuser.me/api/portraits/women/44.jpg",
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
+      "RideMate made my trip stress-free, with a professional driver and smooth, comfortable ride experience throughout.",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const reviews: Review[] = [
     image:
       "https://randomuser.me/api/portraits/men/46.jpg",
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
+      "Booking was simple, the cab arrived quickly, and the service felt safe, reliable, and affordable.",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const reviews: Review[] = [
     image:
       "https://randomuser.me/api/portraits/women/65.jpg",
     review:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam.",
+      "I love how convenient RideMate is—fast rides, friendly drivers, and excellent support every single time.",
   },
 ];
 
@@ -57,9 +57,7 @@ const CustomerReviews: React.FC = () => {
           Our Customer <span className="text-yellow-400">Reviews.</span>
         </h2>
         <p className="mt-4 text-gray-200 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua erat libero
-          condimentum metus.
+          Hear from our happy riders and discover why people trust RideMate for safe and reliable journeys.
         </p>
       </div>
 

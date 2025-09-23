@@ -29,9 +29,7 @@ const AboutSection: React.FC = () => {
             <span className="text-primary">.</span>
           </h2>
           <p className="mt-4 text-foreground/80 text-sm sm:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam quis nostrud eiusmod tempor incididunt.
+            RideMate is your reliable travel partner, delivering safe, comfortable, and trusted cab services across the globe.
           </p>
 
           {/* Features */}
@@ -86,7 +84,7 @@ const AboutSection: React.FC = () => {
       <div className="container mx-auto px-6 lg:px-16 mt-16 grid md:grid-cols-2  xl:grid-cols-3 items-center justify-center gap-6">
         <WeOfferCard
           title="Support All Payment"
-          desc="Lorem ipsum dolor sit amet."
+          desc="Seamless transactions with every payment method"
           bgMain="bg-[#212121]"
           textClr="text-white"
           bgIcon="bg-primary"
@@ -99,7 +97,7 @@ const AboutSection: React.FC = () => {
         <WeOfferCard
           title="Safety First"
           textClr="text-black"
-          desc="Lorem ipsum dolor sit amet."
+          desc="Prioritizing your security on every ride"
           bgMain="bg-primary"
           bgIcon="bg-black"
           mainIcon="https://img.icons8.com/?size=100&id=10483&format=png&color=FCC419"
@@ -111,7 +109,7 @@ const AboutSection: React.FC = () => {
         <WeOfferCard
           title="100% Digital"
           textClr="text-black"
-          desc="Lorem ipsum dolor sit amet."
+          desc="Fully digital experience, fast and paperless"
           bgMain="bg-white"
           bgIcon="bg-primary"
           mainIcon="https://img.icons8.com/?size=100&id=11474&format=png&color=000000"

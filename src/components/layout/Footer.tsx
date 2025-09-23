@@ -13,8 +13,7 @@ export default function Footer() {
             </div>
 
             <p className="mt-4 max-w-xs text-muted-foreground">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non
-              cupiditate quae nam molestias.
+              Book rides, manage trips, and drive with ease. A seamless ride-sharing platform built for Riders, Drivers, and Admins.
             </p>
 
             <ul className="mt-8 flex gap-6">
