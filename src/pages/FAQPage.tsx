@@ -179,26 +179,26 @@ export default function FaqPage() {
     }));
 
     return (
-        <div className="max-w-5xl mx-auto py-12 px-4 my-20">
+        <div className="max-w-5xl mx-auto py-8 sm:py-10 md:py-12 px-4 my-10 sm:my-16 md:my-20">
             {/* Header */}
-            <div className="text-center mb-10">
+            <div className="text-center mb-8 sm:mb-10">
                 <span className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300 text-xs px-3 py-1 rounded-full">
                     FAQ
                 </span>
-                <h2 className="text-[50px] font-bold mt-3 dark:primary">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-bold mt-3 dark:primary">
                     Frequently Asked{" "}
                     <span className="text-primary dark:text-yellow-400">
                         Questions
                     </span>
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400 mt-2">
+                <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2 px-2">
                     Find answers to common questions about our ride-sharing services.
                 </p>
             </div>
 
             {/* Search */}
-            <div className="flex items-center gap-2 max-w-md mx-auto mb-10">
-                <Search className="w-5 h-5 text-gray-400 dark:text-gray-500" />
+            <div className="flex items-center gap-2 max-w-md mx-auto mb-8 sm:mb-10 px-2">
+                <Search className="w-5 h-5 text-gray-400 dark:text-gray-500 flex-shrink-0" />
                 <Input
                     placeholder="Search questions..."
                     value={search}
@@ -208,15 +208,15 @@ export default function FaqPage() {
             </div>
 
             {/* FAQ Sections */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {filteredSections.map((section, idx) => (
                     <div
                         key={idx}
-                        className="p-5 rounded-2xl shadow-sm border bg-white dark:bg-gray-900 dark:border-gray-700"
+                        className="p-4 sm:p-5 rounded-xl sm:rounded-2xl shadow-sm border bg-white dark:bg-gray-900 dark:border-gray-700"
                     >
-                        <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-2 mb-2 sm:mb-3">
                             {section.icon}
-                            <h3 className="font-semibold dark:text-gray-100">
+                            <h3 className="font-semibold text-sm sm:text-base dark:text-gray-100">
                                 {section.title}
                             </h3>
                         </div>
@@ -224,10 +224,10 @@ export default function FaqPage() {
                             {section.faqs.length > 0 ? (
                                 section.faqs.map((faq, i) => (
                                     <AccordionItem key={i} value={`item-${idx}-${i}`}>
-                                        <AccordionTrigger className="dark:text-gray-200">
+                                        <AccordionTrigger className="text-sm sm:text-base text-left dark:text-gray-200">
                                             {faq.question}
                                         </AccordionTrigger>
-                                        <AccordionContent className="dark:text-gray-400">
+                                        <AccordionContent className="text-sm dark:text-gray-400">
                                             {faq.answer}
                                         </AccordionContent>
                                     </AccordionItem>
@@ -243,15 +243,15 @@ export default function FaqPage() {
             </div>
 
             {/* Contact Support */}
-            <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl text-center">
-                <p className="text-lg font-medium dark:primary">
+            <div className="mt-8 sm:mt-10 md:mt-12 p-4 sm:p-6 bg-gray-50 dark:bg-gray-800 rounded-xl sm:rounded-2xl text-center">
+                <p className="text-base sm:text-lg font-medium dark:primary">
                     Still Have Questions?
                 </p>
-                <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 px-2">
                     Can’t find the answer you’re looking for? Please chat with our
                     support team.
                 </p>
-                <Button className="bg-yellow-500 hover:bg-primary primary rounded-full">
+                <Button className="bg-yellow-500 hover:bg-primary primary rounded-full text-sm sm:text-base px-4 sm:px-6">
                     <Link to="/contact" >💬 Contact Support</Link>
                 </Button>
             </div>

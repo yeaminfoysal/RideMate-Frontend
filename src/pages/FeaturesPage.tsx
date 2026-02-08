@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { 
-  Car, 
-  MapPin, 
-  History, 
-  FileText, 
+import {
+  Car,
+  MapPin,
+  History,
+  FileText,
   User,
   ToggleLeft,
   PhoneIncoming,
@@ -212,32 +212,32 @@ const FeaturesPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-32 bg-primary overflow-hidden">
+      <section className="relative py-20 md:py-24 lg:py-32 bg-primary overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="text-center lg:text-left animate-fade-in">
-              <h1 className="text-[50px] font-bold text-primary-foreground mb-6 leading-tight">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+            <div className="text-center lg:text-left animate-fade-in order-2 lg:order-1">
+              <h1 className="text-3xl sm:text-4xl md:text-[50px] font-bold text-primary-foreground mb-4 md:mb-6 leading-tight">
                 Powerful Features
                 <span className="block text-background">For Everyone</span>
               </h1>
-              <p className=" text-primary-foreground/90 mb-8 max-w-2xl">
-                Discover comprehensive capabilities designed for riders, drivers, and administrators. 
+              <p className="text-sm sm:text-base text-primary-foreground/90 mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0">
+                Discover comprehensive capabilities designed for riders, drivers, and administrators.
                 Experience seamless ride-sharing with advanced features and intuitive controls.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                <Button variant="secondary" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6">
                   Explore Rider Features
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary-light text-primary-foreground hover:bg-primary-light/20">
+                <Button variant="outline" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 border-primary-light text-primary-foreground hover:bg-primary-light/20">
                   View Driver Dashboard
                 </Button>
               </div>
             </div>
-            <div className="relative  animate-[float_3s_ease-in-out_infinite]">
-              <img 
-                src={heroImage} 
-                alt="Ride sharing app features" 
+            <div className="relative animate-[float_3s_ease-in-out_infinite] order-1 lg:order-2">
+              <img
+                src={heroImage}
+                alt="Ride sharing app features"
                 className="w-full h-auto rounded-2xl shadow-card-hover"
               />
             </div>
@@ -261,7 +261,7 @@ const FeaturesPage = () => {
         features={driverFeatures}
         images={[driverImage, driverImage, driverImage]}
         imageAlt="Driver dashboard showing earnings and ride management"
-        // reverse={true}
+      // reverse={true}
       />
 
       {/* Admin Features */}
@@ -274,17 +274,17 @@ const FeaturesPage = () => {
       />
 
       {/* Call to Action */}
-      <section className="py-20 bg-feature-gradient">
+      <section className="py-12 sm:py-16 md:py-20 bg-feature-gradient">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-semibold text-foreground mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4 md:mb-6">
               Ready to Get Started?
             </h2>
-            <p className=" text-muted-foreground mb-8">
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 md:mb-8">
               Join thousands of satisfied users who trust our platform for their daily transportation needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className=" px-12 py-6">
+              <Button className="px-8 sm:px-12 py-4 sm:py-6">
                 Learn More
               </Button>
             </div>

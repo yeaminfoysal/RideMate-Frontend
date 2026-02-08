@@ -31,14 +31,14 @@ export const RoleSection = ({
     console.log(featureGroups)
 
     return (
-        <section className="py-20">
+        <section className="py-12 sm:py-16 md:py-20">
             <div className="container mx-auto px-4">
                 {/* Section heading */}
-                <div className="text-center mb-16 animate-fade-in">
-                    <h2 className="text-4xl md:text-5xl font-semibold text-foreground mb-6">
+                <div className="text-center mb-10 sm:mb-12 md:mb-16 animate-fade-in">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4 md:mb-6">
                         {title}
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
                         {description}
                     </p>
                 </div>
@@ -47,22 +47,22 @@ export const RoleSection = ({
                 {featureGroups.map((group, groupIndex) => (
                     <div
                         key={groupIndex}
-                        className={`grid lg:grid-cols-2 gap-16 items-center mb-24`}
+                        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center mb-12 sm:mb-16 md:mb-24`}
                     >
                         {/* Alternating layout */}
                         {groupIndex % 2 === 0 ? (
                             <>
-                                {/* Image left */}
-                                <div className="animate-slide-up">
+                                {/* Image left on desktop, top on mobile */}
+                                <div className="animate-slide-up order-1">
                                     <img
                                         src={images[groupIndex % images.length]} // images repeat হবে
                                         alt={imageAlt}
-                                        className="w-full h-auto rounded-2xl shadow-card-hover"
+                                        className="w-full h-auto rounded-xl sm:rounded-2xl shadow-card-hover"
                                     />
                                 </div>
-                                {/* Features right */}
-                                <div>
-                                    <div className="grid gap-8">
+                                {/* Features right on desktop, bottom on mobile */}
+                                <div className="order-2">
+                                    <div className="grid gap-4 sm:gap-6 md:gap-8">
                                         {group.map((feature, i) => (
                                             <div
                                                 key={i}
@@ -79,9 +79,9 @@ export const RoleSection = ({
                             </>
                         ) : (
                             <>
-                                {/* Features left */}
-                                <div>
-                                    <div className="grid gap-8">
+                                {/* Features left on desktop, bottom on mobile */}
+                                <div className="order-2 lg:order-1">
+                                    <div className="grid gap-4 sm:gap-6 md:gap-8">
                                         {group.map((feature, i) => (
                                             <div
                                                 key={i}
@@ -95,12 +95,12 @@ export const RoleSection = ({
                                         ))}
                                     </div>
                                 </div>
-                                {/* Image right */}
-                                <div className="animate-slide-up">
+                                {/* Image right on desktop, top on mobile */}
+                                <div className="animate-slide-up order-1 lg:order-2">
                                     <img
                                         src={images[groupIndex % images.length]}
                                         alt={imageAlt}
-                                        className="w-full h-auto rounded-2xl shadow-card-hover"
+                                        className="w-full h-auto rounded-xl sm:rounded-2xl shadow-card-hover"
                                     />
                                 </div>
                             </>
