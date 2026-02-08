@@ -19,7 +19,7 @@ export function BookingForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-[280px] sm:w-[600px] md:w-[750px] lg:w-[824px] mx-auto  bg-background dark:bg-[#131313] backdrop-blur-sm p-6 sm:p-8 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800"
+      className="w-[280px] sm:w-[600px] md:w-[750px] lg:w-[824px] mx-auto  bg-background dark:bg-[#131313] backdrop-blur-sm p-6 sm:p-8 rounded-3xl shadow-2xl border-2 border-primary/20"
     >
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-primary/10 rounded-xl">
