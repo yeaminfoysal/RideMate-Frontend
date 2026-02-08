@@ -84,24 +84,24 @@ const RideMap: React.FC<RouteProps> = ({ pickup, destination }) => {
 
   // Layer-based marker GeoJSON
   const markerData = {
-    type: "FeatureCollection",
+    type: "FeatureCollection" as const,
     features: [
       pickup
         ? {
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [pickup.lng, pickup.lat] },
+            type: "Feature" as const,
+            geometry: { type: "Point" as const, coordinates: [pickup.lng, pickup.lat] },
             properties: { color: "green" },
           }
         : null,
       destination
         ? {
-            type: "Feature",
-            geometry: { type: "Point", coordinates: [destination.lng, destination.lat] },
+            type: "Feature" as const,
+            geometry: { type: "Point" as const, coordinates: [destination.lng, destination.lat] },
             properties: { color: "red" },
           }
         : null,
     ].filter(Boolean),
-  };
+  } as any;
 
   return (
     <div className="w-full h-[500px] rounded-lg overflow-hidden border">

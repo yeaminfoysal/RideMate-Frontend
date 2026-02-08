@@ -1,4 +1,6 @@
 import React from "react";
+import { Quote, Star } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Review {
   id: number;
@@ -6,6 +8,7 @@ interface Review {
   role: string;
   image: string;
   review: string;
+  rating: number;
 }
 
 const reviews: Review[] = [
@@ -13,76 +16,159 @@ const reviews: Review[] = [
     id: 1,
     name: "Devina Mueller",
     role: "Entrepreneur",
-    image:
-      "https://randomuser.me/api/portraits/women/44.jpg",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
     review:
       "RideMate made my trip stress-free, with a professional driver and smooth, comfortable ride experience throughout.",
+    rating: 5,
   },
   {
     id: 2,
     name: "Dave Beech",
     role: "Manager",
-    image:
-      "https://randomuser.me/api/portraits/men/46.jpg",
+    image: "https://randomuser.me/api/portraits/men/46.jpg",
     review:
       "Booking was simple, the cab arrived quickly, and the service felt safe, reliable, and affordable.",
+    rating: 5,
   },
   {
     id: 3,
     name: "Xavier Mcfarla",
     role: "CEO Brand",
-    image:
-      "https://randomuser.me/api/portraits/women/65.jpg",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
     review:
       "I love how convenient RideMate is—fast rides, friendly drivers, and excellent support every single time.",
+    rating: 5,
   },
 ];
 
 const CustomerReviews: React.FC = () => {
   return (
     <section
-      className="relative bg-cover bg-center bg-no-repeat py-20 pb-80 lg:mb-46"
+      className="relative bg-cover bg-center bg-no-repeat py-16 sm:py-20 pb-72 sm:pb-80 lg:pb-96 lg:mb-40"
       style={{
         backgroundImage:
           "url('https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/glowing-london-taxi-light.webp')",
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      {/* Enhanced Overlay with Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center text-white">
-        <p className="text-yellow-400 font-medium">Customers Feedback</p>
-        <h2 className="text-[50px] font-semibold mt-2">
-          Our Customer <span className="text-yellow-400">Reviews.</span>
-        </h2>
-        <p className="mt-4 text-gray-200 max-w-2xl mx-auto">
-          Hear from our happy riders and discover why people trust RideMate for safe and reliable journeys.
-        </p>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
 
-      {/* Cards */}
-      <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 w-full z-20 max-w-6xl mx-auto mt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 justify-center px-4">
-        {reviews.map((review) => (
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center text-white">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 text-primary px-4 py-2 rounded-full font-semibold text-sm mb-4">
+          <Star className="w-4 h-4 fill-primary" />
+          Customers Feedback
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-bold mt-2 leading-tight">
+          Our Customer{" "}
+          <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text text-transparent">
+            Reviews.
+          </span>
+        </h2>
+
+        {/* Description */}
+        <p className="mt-4 sm:mt-6 text-gray-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Hear from our happy riders and discover why people trust RideMate for safe and reliable journeys.
+        </p>
+
+        {/* Star Rating Summary */}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="flex gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+            ))}
+          </div>
+          <span className="text-white font-semibold">4.9/5</span>
+          <span className="text-gray-300 text-sm">from 500+ reviews</span>
+        </div>
+      </div>
+
+      {/* Review Cards */}
+      <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 w-full z-20 max-w-6xl mx-auto mt-12 sm:mt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 justify-center px-4 sm:px-6">
+        {reviews.map((review, index) => (
           <div
             key={review.id}
-            className="bg-background dark:bg-[#131313] rounded-2xl shadow-lg p-6 md:p-8 flex-1 transform translate-y-20"
+            className={cn(
+              "group relative bg-background dark:bg-[#131313] rounded-2xl shadow-2xl p-6 md:p-8 transform lg:translate-y-20 hover:-translate-y-2 transition-all duration-500 border border-gray-200 dark:border-gray-800 overflow-hidden",
+              "animate-fade-in-up"
+            )}
+            style={{ animationDelay: `${index * 150}ms` }}
           >
-            <div className="flex items-center justify-center">
-              <img
-                src={review.image}
-                alt={review.name}
-                className="w-16 h-16 rounded-full object-cover"
-              />
+            {/* Decorative Corner */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-[100px]" />
+
+            {/* Hover Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative z-10">
+              {/* Profile Image with Badge */}
+              <div className="flex items-center justify-center mb-4">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-primary/30 rounded-full blur-md group-hover:blur-lg transition-all duration-500" />
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="relative w-16 h-16 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {/* Verified Badge */}
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-primary rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800">
+                    <svg className="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quote Icon */}
+              <div className="flex items-center justify-center mb-3">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                  <Quote className="w-6 h-6 text-primary" />
+                </div>
+              </div>
+
+              {/* Star Rating */}
+              <div className="flex justify-center gap-1 mb-4">
+                {[...Array(review.rating)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-primary text-primary transition-all duration-300 group-hover:scale-110"
+                    style={{ transitionDelay: `${i * 50}ms` }}
+                  />
+                ))}
+              </div>
+
+              {/* Review Text */}
+              <p className="text-sm sm:text-base text-center text-muted-foreground leading-relaxed mb-6 min-h-[80px]">
+                "{review.review}"
+              </p>
+
+              {/* Divider */}
+              <div className="relative h-px mb-4 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+              </div>
+
+              {/* Author Info */}
+              <div className="text-center">
+                <h4 className="font-bold text-base sm:text-lg group-hover:text-primary transition-colors">
+                  {review.name}
+                </h4>
+                <p className="text-primary text-xs sm:text-sm font-medium mt-1">
+                  {review.role}
+                </p>
+              </div>
             </div>
-            <p className="text-yellow-500 text-5xl leading-none text-center my-4">
-              &quot;
-            </p>
-            <p className="text-sm  text-center">{review.review}</p>
-            <div className="mt-6 text-center">
-              <h4 className="font-bold ">{review.name}</h4>
-              <p className="text-yellow-500 text-sm">{review.role}</p>
-            </div>
+
+            {/* Bottom Accent */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
           </div>
         ))}
       </div>
