@@ -18,13 +18,13 @@ const featuresRight = [
 
 const AboutSection: React.FC = () => {
   return (
-    <section className="py-16 bg-background my-20">
+    <section className="py-10 sm:py-12 md:py-16 bg-background my-10 sm:my-16 md:my-20">
       {/* Top Grid */}
-      <div className="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* Left Content */}
         <div>
           <span className="text-primary font-medium">About RideMate</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mt-2 leading-snug">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-2 leading-snug">
             Trusted Cab Services In <br /> All Over The World
             <span className="text-primary">.</span>
           </h2>
@@ -81,7 +81,7 @@ const AboutSection: React.FC = () => {
       </div>
 
       {/* WeOffer Section */}
-      <div className="container mx-auto px-6 lg:px-16 mt-16 grid md:grid-cols-2  xl:grid-cols-3 items-center justify-center gap-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center justify-center gap-4 sm:gap-6">
         <WeOfferCard
           title="Support All Payment"
           desc="Seamless transactions with every payment method"

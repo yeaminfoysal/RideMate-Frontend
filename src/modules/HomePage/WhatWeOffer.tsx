@@ -2,23 +2,23 @@ import WeOfferCard from "./WeOfferCard";
 
 export default function WhatWeOffer() {
     return (
-        <div className="py-16 sm:py-20 mx-auto">
+        <div className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
             {/* Section Header */}
-            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-                <p className="text-primary text-base sm:text-lg font-semibold tracking-wide uppercase mb-3">
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
+                <p className="text-primary text-xs sm:text-sm md:text-base font-semibold tracking-wide uppercase mb-2 sm:mb-3">
                     What We Offer
                 </p>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-6 px-4">
                     We Offer The Best For You
                 </h2>
-                <p className="text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed">
+                <p className="text-muted-foreground text-[10px] sm:text-xs md:text-sm lg:text-base leading-relaxed px-4 sm:px-6">
                     Discover our range of top-quality services designed to bring you comfort, reliability, and convenience. We are committed to offering the very best, tailored just for you.
                 </p>
             </div>
 
             {/* Cards Grid */}
-            <div className="mt-10 sm:mt-12 flex flex-wrap justify-center gap-6 lg:gap-10">
-                <div className="animate-fade-in-up" style={{ animationDelay: "0ms" }}>
+            <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row justify-between items-center sm:items-stretch gap-6 sm:gap-6 md:gap-8 lg:gap-10">
+                <div className="animate-fade-in-up w-full sm:w-auto flex justify-center" style={{ animationDelay: "0ms" }}>
                     <WeOfferCard
                         title="Support All Payment"
                         desc="Seamless transactions with every payment method"
@@ -33,7 +33,7 @@ export default function WhatWeOffer() {
                     />
                 </div>
 
-                <div className="animate-fade-in-up" style={{ animationDelay: "150ms" }}>
+                <div className="animate-fade-in-up w-full sm:w-auto flex justify-center" style={{ animationDelay: "150ms" }}>
                     <WeOfferCard
                         title="Safety First"
                         textClr="text-black"
@@ -48,7 +48,7 @@ export default function WhatWeOffer() {
                     />
                 </div>
 
-                <div className="animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+                <div className="animate-fade-in-up w-full sm:w-auto flex justify-center" style={{ animationDelay: "300ms" }}>
                     <WeOfferCard
                         title="100% Digital"
                         textClr="text-black"

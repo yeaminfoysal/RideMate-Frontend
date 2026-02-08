@@ -40,19 +40,19 @@ const steps: Step[] = [
 
 const WorkSteps: React.FC = () => {
   return (
-    <section className="py-20 my-20 mt-34">
-      <div className="container mx-auto px-6 text-center">
+    <section className="py-12 sm:py-16 md:py-20 my-10 sm:my-16 md:my-20 mt-20 sm:mt-28 md:mt-34">
+      <div className="container mx-auto px-4 sm:px-6 text-center">
         {/* Section Heading */}
         <span className="text-primary font-medium">How We Work</span>
-        <h2 className="text-[50px] font-semibold text-foreground mt-2 mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-semibold text-foreground mt-2 mb-4">
           Easy Step For Book Your Taxi<span className="text-primary">.</span>
         </h2>
-        <p className="text-foreground/70 max-w-2xl mx-auto mb-12">
+        <p className="text-foreground/70 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12 text-sm sm:text-base px-2">
           Booking your ride is simple and quick—just follow a few easy steps to get moving hassle-free. Enjoy a smooth, stress-free experience every time you travel with us.
         </p>
 
         {/* Steps */}
-        <div className="relative flex flex-col lg:flex-row items-center justify-between lg:space-x-8 space-y-10 lg:space-y-0 mt-20">
+        <div className="relative flex flex-col lg:flex-row items-center justify-between lg:space-x-8 space-y-8 sm:space-y-10 lg:space-y-0 mt-10 sm:mt-16 md:mt-20">
 
           {/* Dotted line between steps */}
           <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] border-t-2 border-dashed border-gray-300 z-0" />

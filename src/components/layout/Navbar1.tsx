@@ -61,43 +61,6 @@ const Navbar1 = ({
         { title: "Dashboard", url: "/user", role: "USER" },
         { title: "Dashboard", url: "/driver", role: "DRIVER" },
         { title: "Dashboard", url: "/admin", role: "ADMIN" },
-        // {
-        //     title: "Products",
-        //     url: "#",
-        //     role: "PUBLIC",
-        //     items: [
-        //         {
-        //             title: "Blog",
-        //             description: "The latest industry news, updates, and info",
-        //             icon: <Book className="size-5 shrink-0" />,
-        //             url: "#",
-        //         },
-        //         {
-        //             title: "Company",
-        //             description: "Our mission is to innovate and empower the world",
-        //             icon: <Trees className="size-5 shrink-0" />,
-        //             url: "#",
-        //         },
-        //         {
-        //             title: "Careers",
-        //             description: "Browse job listing and discover our workspace",
-        //             icon: <Sunset className="size-5 shrink-0" />,
-        //             url: "#",
-        //         },
-        //         {
-        //             title: "Support",
-        //             description:
-        //                 "Get in touch with our support team or visit our community forums",
-        //             icon: <Zap className="size-5 shrink-0" />,
-        //             url: "#",
-        //         },
-        //     ],
-        // },
-        // {
-        //     title: "Pricing",
-        //     url: "#",
-        //     role: "PUBLIC",
-        // },
     ],
 }: Navbar1Props) => {
 
@@ -124,8 +87,8 @@ const Navbar1 = ({
     };
 
     return (
-        <section className="pt-4">
-            <div className="container mx-auto border-2 rounded-2xl bg-background px-4 lg:py-3 md:py-1 border-primary/30">
+        <section className="pt-2 md:pt-4">
+            <div className="container mx-auto border-2 rounded-2xl bg-background px-4 md:py lg:py-3 border-primary/30">
                 {/* Desktop Menu */}
                 <nav className="hidden justify-between lg:flex">
                     <div className="flex items-center gap-6">
@@ -163,49 +126,58 @@ const Navbar1 = ({
                 </nav>
 
                 {/* Mobile Menu */}
-                <div className="block lg:hidden">
+                <div className="block lg:hidden py-1">
                     <div className="flex items-center justify-between">
-                        <Sheet>
-                            <SheetTrigger asChild>
-                                <Button variant="outline" size="icon">
-                                    <Menu className="size-4" />
-                                </Button>
-                            </SheetTrigger>
-                            <SheetContent className="overflow-y-auto">
-                                <SheetHeader>
-                                    <SheetTitle></SheetTitle>
-                                </SheetHeader>
-                                <div className="flex flex-col gap-6 p-4">
-                                    <Accordion
-                                        type="single"
-                                        collapsible
-                                        className="flex w-full flex-col gap-4"
-                                    >
-                                        {filteredMenu.map((item) => renderMobileMenuItem(item))}
-                                    </Accordion>
+                        {/* Mobile Logo */}
+                        <Link to="/">
+                            <h3 className="text-xl font-semibold">RideMate</h3>
+                        </Link>
 
-                                    <div className="flex flex-col gap-3">
-                                        <ModeToggle />
+                        {/* Mobile Right Section */}
+                        <div className="flex items-center gap-2">
+                            <ModeToggle />
+                            <Sheet>
+                                <SheetTrigger asChild>
+                                    <Button variant="outline" size="icon">
+                                        <Menu className="size-4" />
+                                    </Button>
+                                </SheetTrigger>
+                                <SheetContent className="overflow-y-auto" side="right">
+                                    <SheetHeader>
+                                        <SheetTitle>
+                                            <span className="text-xl font-semibold">RideMate</span>
+                                        </SheetTitle>
+                                    </SheetHeader>
+                                    <div className="flex flex-col gap-6 p-4 mt-4">
+                                        <Accordion
+                                            type="single"
+                                            collapsible
+                                            className="flex w-full flex-col gap-4"
+                                        >
+                                            {filteredMenu.map((item) => renderMobileMenuItem(item))}
+                                        </Accordion>
 
-                                        {data?.data?.email && (
-                                            <Button
-                                                onClick={handleLogout}
-                                                variant="outline"
-                                                className="text-sm"
-                                            >
-                                                Logout
-                                            </Button>
-                                        )}
+                                        <div className="flex flex-col gap-3 mt-4">
+                                            {data?.data?.email && (
+                                                <Button
+                                                    onClick={handleLogout}
+                                                    variant="outline"
+                                                    className="text-sm w-full"
+                                                >
+                                                    Logout
+                                                </Button>
+                                            )}
 
-                                        {!data?.data?.email && (
-                                            <Button asChild className="text-sm">
-                                                <Link to="/login">Login</Link>
-                                            </Button>
-                                        )}
+                                            {!data?.data?.email && (
+                                                <Button asChild className="text-sm w-full">
+                                                    <Link to="/login">Login</Link>
+                                                </Button>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            </SheetContent>
-                        </Sheet>
+                                </SheetContent>
+                            </Sheet>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,6 @@ export default function HomePage() {
     return (
         <div>
             <div id="hero">
-                {/* <Navbar1 /> */}
                 <Hero1 />
             </div>
             <div className="relative mb-80">
