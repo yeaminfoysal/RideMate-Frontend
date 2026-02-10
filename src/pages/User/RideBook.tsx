@@ -5,11 +5,16 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { setPickup, setDestination, resetRide } from "@/redux/features/ride/rideSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUserInfoQuery } from "@/redux/features/auth/authApi";
 import { Navigate, useNavigate } from "react-router";
 
 const RideBook = () => {
+  
+  useEffect(() => {
+    document.title = "RideMate | Book Ride";
+  }, []);
+
   const { data: userInfo } = useUserInfoQuery(undefined);
   const dispatch = useAppDispatch();
   const { pickup, destination } = useAppSelector((state) => state.ride);

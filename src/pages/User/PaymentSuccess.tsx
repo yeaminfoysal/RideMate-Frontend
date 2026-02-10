@@ -1,8 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 import { Link, useLocation } from "react-router";
+import { useEffect } from "react";
 
 export default function PaymentSuccess() {
+  
+  useEffect(() => {
+    document.title = "RideMate | Payment Success";
+  }, []);
+
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
 
@@ -38,11 +44,10 @@ export default function PaymentSuccess() {
           <p className="text-sm text-muted-foreground">
             <span className="font-medium text-foreground">Status:</span>{" "}
             <span
-              className={`px-2 py-1 rounded-md text-xs font-semibold ${
-                status === "success"
+              className={`px-2 py-1 rounded-md text-xs font-semibold ${status === "success"
                   ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
                   : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300"
-              }`}
+                }`}
             >
               {status}
             </span>

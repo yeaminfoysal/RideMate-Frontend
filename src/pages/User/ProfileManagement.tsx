@@ -17,8 +17,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useForm } from "react-hook-form";
 import { User, Shield, Mail, Phone, Car, IdCard } from "lucide-react";
 import { toast } from "sonner";
+import { useEffect } from "react";
 
 export default function ProfileManagement() {
+    useEffect(() => {
+        document.title = "RideMate | Profile";
+    }, []);
+
     const { data, isLoading } = useUserInfoQuery(undefined);
     const { data: driverProfile } = useGetDriverProfileQuery(undefined, {
         skip: data?.data?.role !== "DRIVER",
@@ -152,7 +157,7 @@ export default function ProfileManagement() {
                     <TabsTrigger className="text-xs sm:text-[16px]" value="password">Password</TabsTrigger>
                     <TabsTrigger className="text-xs sm:text-[16px]" value="emergencyContact">Emergency <span className="hidden sm:block">Contact</span></TabsTrigger>
                     {profile.role === "DRIVER" && (
-                        <TabsTrigger className="text-xs sm:text-[16px]"  value="driver">Driver Profile</TabsTrigger>
+                        <TabsTrigger className="text-xs sm:text-[16px]" value="driver">Driver Profile</TabsTrigger>
                     )}
                 </TabsList>
 

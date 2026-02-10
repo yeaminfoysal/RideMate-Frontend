@@ -22,8 +22,14 @@ import riderImage from "@/assets/FeaturesRider.jpg";
 import driverImage from "@/assets/FeaturesDriver.jpg";
 import adminImage from "@/assets/FeaturesAdmin.jpg";
 import { RoleSection } from "@/modules/FeaturesPage/RoleSection";
+import { useEffect } from "react";
 
 const FeaturesPage = () => {
+
+  useEffect(() => {
+    document.title = "RideMate | Features";
+  }, []);
+  
   const riderFeatures = [
     {
       icon: MapPin,

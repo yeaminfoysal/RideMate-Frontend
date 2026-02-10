@@ -37,6 +37,7 @@ export default function LiveRide() {
     const activeRide = data?.data?.activeRide;
 
     useEffect(() => {
+        document.title = "RideMate | Active Ride";
         if (activeRide?.status === "completed") {
             setPaymentOpen(true);
         }

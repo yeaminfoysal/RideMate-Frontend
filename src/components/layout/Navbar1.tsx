@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import logo from "@/assets/logo2.png";
 // import { Book, Sunset, Trees, Zap } from "lucide-react";
 
 import {
@@ -93,9 +94,14 @@ const Navbar1 = ({
                 <nav className="hidden justify-between lg:flex">
                     <div className="flex items-center gap-6">
                         {/* Logo */}
-                        <div>
+                        <Link to="/" className="flex items-center gap-2 group">
+                            <img
+                                src={logo}
+                                alt="RideMate Logo"
+                                className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+                            />
                             <h3 className="text-2xl font-semibold">RideMate</h3>
-                        </div>
+                        </Link>
                         <div className="flex items-center">
                             <NavigationMenu>
                                 <NavigationMenuList>
@@ -129,7 +135,12 @@ const Navbar1 = ({
                 <div className="block lg:hidden py-1">
                     <div className="flex items-center justify-between">
                         {/* Mobile Logo */}
-                        <Link to="/">
+                        <Link to="/" className="flex items-center gap-2">
+                            <img
+                                src={logo}
+                                alt="RideMate Logo"
+                                className="h-8 w-auto"
+                            />
                             <h3 className="text-xl font-semibold">RideMate</h3>
                         </Link>
 

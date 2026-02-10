@@ -1,6 +1,12 @@
 import { RegistrationForm } from "@/modules/Authentication/RegistrationForm";
+import { useEffect } from "react";
 
 export default function RegistrationPage() {
+  
+  useEffect(() => {
+    document.title = "RideMate | Register";
+  }, []);
+
   return (
     <div className="relative flex min-h-svh items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:bg-background dark:from-background dark:via-background dark:to-background p-4 md:p-10">
       {/* Animated background decorations */}

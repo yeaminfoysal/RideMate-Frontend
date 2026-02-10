@@ -6,8 +6,14 @@ import CustomerReviews from "@/modules/HomePage/CastumerReviewsSection";
 import DownloadApp from "@/modules/HomePage/DownloadAppSection";
 import { Hero1 } from "@/modules/HomePage/Hero";
 import WhatWeOffer from "@/modules/HomePage/WhatWeOffer";
+import { useEffect } from "react";
 
 export default function HomePage() {
+    
+    useEffect(() => {
+        document.title = "RideMate | Home";
+    }, []);
+
     return (
         <div>
             <div id="hero">

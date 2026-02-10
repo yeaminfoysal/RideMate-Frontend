@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CalendarIcon, MapPin, Wallet, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
@@ -37,6 +37,10 @@ export default function RideHistory() {
     const [page, setPage] = useState(1);
     const pageSize = 3;
     const [createdAt, setCreatedAt] = useState<string | null>(null);
+
+    useEffect(() => {
+        document.title = "RideMate | Ride History";
+    }, []);
 
     // ✅ Send undefined if "All" is selected
     const apiStatus = statusFilter === "all" ? undefined : statusFilter;

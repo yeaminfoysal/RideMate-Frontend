@@ -16,8 +16,14 @@ import {
     Phone,
     User,
 } from "lucide-react";
+import { useEffect } from "react";
 
 export default function RideDetails() {
+
+    useEffect(() => {
+        document.title = "RideMate | Ride Details";
+    }, []);
+    
     const { id } = useParams();
     const navigate = useNavigate();
     const { data, isLoading } = useGetRideDetailsQuery(id, { skip: !id });
@@ -35,7 +41,7 @@ export default function RideDetails() {
             <p className="text-center text-muted-foreground">No ride details found.</p>
         );
     }
-console.log(data)
+    console.log(data)
     return (
         <section className="container mx-auto px-4 py-8 space-y-6">
             {/* 🔙 Back button & Title */}
