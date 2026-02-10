@@ -19,6 +19,7 @@ import RideMap from "@/modules/User/RideMap";
 import { useCreatePaymentUrlMutation } from "@/redux/features/payment/paymentApi";
 import { toast } from "sonner";
 import { useUserInfoQuery } from "@/redux/features/auth/authApi";
+import { useNavigate } from "react-router";
 
 export default function LiveRide() {
     const { data, isLoading, refetch } = useGetActiveRideQuery(undefined);
@@ -28,6 +29,7 @@ export default function LiveRide() {
     const [sosOpen, setSosOpen] = useState(false);
     const [createPaymentUrl] = useCreatePaymentUrlMutation();
     const { data: userInfo } = useUserInfoQuery(undefined);
+    const navigate = useNavigate();
 
     //   const emergencyEmail = userInfo?.data.emergencyContact?.email;
     const emergencyPhone = userInfo?.data.emergencyContact?.phone;
@@ -46,13 +48,18 @@ export default function LiveRide() {
     const { _id, pickup, destination, fare, paymentMethod, status, driver, paymentUrl } = activeRide;
 
     const handleCancel = async () => {
+        const toastId = toast.loading("Cenceling....")
         try {
             await cancelRide(_id).unwrap();
             setCancelOpen(false);
             refetch();
-        } catch (error) {
-            console.error(error);
+            toast.success("Login successfull", { id: toastId })
+            navigate("/book-ride")
+        } catch (error: any) {
+            console.error(error.data.message);
+            toast.error(error.data.message, { id: toastId })
         }
+
     };
 
     const handlePayment = async () => {
