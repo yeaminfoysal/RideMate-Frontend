@@ -11,28 +11,28 @@ interface Step {
 const steps: Step[] = [
   {
     icon: "https://img.icons8.com/?size=100&id=nCEJ53k3fryj&format=png&color=fdb80f",
-    title: "Booking a Vehicle",
-    description: "Select your ride quickly and easily.",
+    title: "Enter Pickup & Destination",
+    description: "Input your location and where you want to go.",
     bg: "bg-foreground",
     text: "text-white",
   },
   {
     icon: "https://img.icons8.com/?size=100&id=qPjaEaXbpSKm&format=png&color=fdb80f",
-    title: "Get a Driver",
-    description: "A professional driver arrives at your location.",
+    title: "Find a Driver",
+    description: "Get matched with a nearby driver instantly.",
     bg: "bg-white",
   },
   {
     icon: "https://img.icons8.com/?size=100&id=u3c2ImZFIynC&format=png&color=fdb80f",
-    title: "Enjoy your Ride",
-    description: "Relax while we take you to destination.",
+    title: "Track Your Ride in Real-Time",
+    description: "Monitor your driver's location with live GPS.",
     bg: "bg-foreground",
     text: "text-white",
   },
   {
     icon: "https://img.icons8.com/?size=100&id=5dSgwauapeOo&format=png&color=000000",
-    title: "Pay your Taxi",
-    description: "Safe and simple payment after your trip.",
+    title: "Pay Securely",
+    description: "Complete payment via SSLCOMMERZ gateway.",
     bg: "bg-yellow-400",
     text: "text-foreground",
   }
@@ -43,12 +43,12 @@ const WorkSteps: React.FC = () => {
     <section className="py-12 sm:py-16 md:py-20 my-10 sm:my-16 md:my-20 mt-20 sm:mt-28 md:mt-34">
       <div className="container mx-auto px-4 sm:px-6 text-center">
         {/* Section Heading */}
-        <span className="text-primary font-medium">How We Work</span>
+        <span className="text-primary font-medium">How It Works</span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-semibold text-foreground mt-2 mb-4">
-          Easy Step For Book Your Taxi<span className="text-primary">.</span>
+          Simple Steps to Book Your Ride<span className="text-primary">.</span>
         </h2>
         <p className="text-foreground/70 max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-12 text-sm sm:text-base px-2">
-          Booking your ride is simple and quick—just follow a few easy steps to get moving hassle-free. Enjoy a smooth, stress-free experience every time you travel with us.
+          Experience a seamless ride-booking process with RideMate. From entering your destination to real-time tracking and secure payments, we make every journey effortless.
         </p>
 
         {/* Steps */}

@@ -3,17 +3,17 @@ import { CheckCircle } from "lucide-react";
 import WeOfferCard from "../HomePage/WeOfferCard";
 
 const featuresLeft = [
-  "Flexible & Cost-Effective",
-  "VIP & Annual Pass Services",
-  "Over 250,000 Clients",
-  "Satisfaction Guarantee",
+  "Real-Time Ride Tracking",
+  "Role-Based Access Control",
+  "Emergency SOS Feature",
+  "JWT Authentication & Google OAuth",
 ];
 
 const featuresRight = [
-  "Company Contract",
-  "Convenient Location",
-  "Home Pickup",
-  "One Way Rental",
+  "Paginated Ride History",
+  "Dynamic Fare Calculation",
+  "SSLCOMMERZ Payment Gateway",
+  "24/7 Customer Support",
 ];
 
 const AboutSection: React.FC = () => {
@@ -25,11 +25,11 @@ const AboutSection: React.FC = () => {
         <div>
           <span className="text-primary font-medium">About RideMate</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mt-2 leading-snug">
-            Trusted Cab Services In <br /> All Over The World
+            Full-Featured <br /> Ride-Sharing Platform
             <span className="text-primary">.</span>
           </h2>
           <p className="mt-4 text-foreground/80 text-sm sm:text-base">
-            RideMate is your reliable travel partner, delivering safe, comfortable, and trusted cab services across the globe.
+            RideMate connects riders with drivers efficiently and securely. Built with modern MERN stack and enhanced with real-time tracking, analytics, and role-based access control for riders, drivers, and administrators.
           </p>
 
           {/* Features */}
@@ -56,10 +56,10 @@ const AboutSection: React.FC = () => {
               className="w-12 h-12 rounded-full object-cover"
             />
             <div>
-              <p className="text-gray-500 text-xs sm:text-sm">We Are Available 24 Hours</p>
+              <p className="text-gray-500 text-xs sm:text-sm">We Are Available 24/7</p>
               <p className="font-bold text-base sm:text-lg">
-                For Booking :{" "}
-                <span className="text-primary">(+62) 8896-2220</span>
+                Support & Booking:{" "}
+                <span className="text-primary">Available Anytime</span>
               </p>
             </div>
           </div>

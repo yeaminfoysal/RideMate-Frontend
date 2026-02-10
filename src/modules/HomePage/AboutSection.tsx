@@ -1,4 +1,4 @@
-import { MapPin, Car, DollarSign } from "lucide-react";
+import { MapPin, Shield, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "@/assets/calling-taxi.webp";
 
@@ -6,25 +6,25 @@ export default function AboutSection() {
   const features = [
     {
       icon: MapPin,
-      title: "Long Distance Trip",
-      description: "Comfortable rides for your longer journeys.",
+      title: "Live Ride Tracking",
+      description: "Real-time GPS tracking with driver details and route visualization for complete transparency.",
       bgColor: "bg-gradient-to-br from-gray-900 to-gray-800",
       iconColor: "text-primary",
       accentColor: "from-primary/20",
     },
     {
-      icon: Car,
-      title: "Taxi Tour Services",
-      description: "Flexible options with cars and bikes.",
+      icon: Shield,
+      title: "Emergency SOS Feature",
+      description: "Quick access safety button to call police, notify emergency contacts, and share live location instantly.",
       bgColor: "bg-gradient-to-br from-primary to-yellow-500",
       iconColor: "text-black",
       accentColor: "from-yellow-400/30",
     },
     {
-      icon: DollarSign,
+      icon: CreditCard,
       iconImage: "https://img.icons8.com/?size=30&id=85801&format=png&color=000000",
-      title: "Dynamic Fair Calculation",
-      description: "Smart pricing based on traffic and distance.",
+      title: "Secure Payment Gateway",
+      description: "Dynamic fare calculation based on distance and traffic with SSLCOMMERZ integration.",
       bgColor: "bg-gradient-to-br from-white to-gray-50 border border-gray-200",
       iconColor: "text-primary",
       accentColor: "from-primary/10",
@@ -43,7 +43,7 @@ export default function AboutSection() {
           {/* Floating Badge */}
           <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 z-20 bg-primary text-black px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl shadow-xl font-bold text-[10px] sm:text-xs md:text-sm flex items-center gap-1.5 sm:gap-2 animate-bounce-slow">
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-black rounded-full animate-pulse" />
-            Trusted Worldwide
+            Trusted Platform
           </div>
 
           {/* Image Container */}
@@ -54,7 +54,7 @@ export default function AboutSection() {
             <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-xl group-hover:shadow-primary/20 transition-all duration-500">
               <img
                 src={Image}
-                alt="Traveler with luggage calling taxi"
+                alt="Traveler booking RideMate taxi"
                 className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
 
@@ -67,11 +67,11 @@ export default function AboutSection() {
           <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-white dark:bg-gray-900 rounded-lg sm:rounded-xl shadow-xl p-2.5 sm:p-3 md:p-4 border border-gray-100 dark:border-gray-800">
             <div className="flex items-center gap-2 sm:gap-3">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Car className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
               </div>
               <div>
-                <p className="text-base sm:text-lg font-bold text-foreground">500K+</p>
-                <p className="text-[9px] sm:text-[10px] text-muted-foreground">Happy Riders</p>
+                <p className="text-base sm:text-lg font-bold text-foreground">100%</p>
+                <p className="text-[9px] sm:text-[10px] text-muted-foreground">Safe Rides</p>
               </div>
             </div>
           </div>
@@ -87,14 +87,17 @@ export default function AboutSection() {
             </div>
 
             <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
-              Trusted Cab Services In All Over The{" "}
+              Full-Featured{" "}
               <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text">
-                World.
+                Ride-Sharing Platform
               </span>
+              {" "}For Everyone
             </h2>
 
             <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">
-              RideMate is your reliable travel partner, delivering safe, comfortable, and trusted cab services across the globe.
+              RideMate connects riders with drivers efficiently and securely. Built with modern MERN stack
+              and enhanced with real-time tracking, analytics, and role-based access control for riders,
+              drivers, and administrators.
             </p>
           </div>
 
@@ -166,10 +169,10 @@ export default function AboutSection() {
           {/* CTA Section */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
             <button className="px-5 py-2.5 sm:px-6 sm:py-3 bg-primary text-black font-semibold rounded-lg hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-primary/30 text-xs sm:text-sm">
-              Get Started Now
+              Book a Ride Now
             </button>
             <button className="px-5 py-2.5 sm:px-6 sm:py-3 bg-transparent border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-black transition-all duration-300 text-xs sm:text-sm">
-              Learn More
+              Become a Driver
             </button>
           </div>
         </div>

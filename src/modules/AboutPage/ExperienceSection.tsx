@@ -2,10 +2,10 @@ import React from "react";
 
 const ExperienceSection: React.FC = () => {
     const stats = [
-        { number: "167", label: "Our Taxi Unit" },
-        { number: "2820", label: "Happy Customer" },
-        { number: "25", label: "Years of Experience" },
-        { number: "1285", label: "App Downloads" },
+        { number: "500", label: "Active Drivers" },
+        { number: "15K", label: "Total Rides Completed" },
+        { number: "3", label: "User Roles (Rider, Driver, Admin)" },
+        { number: "98", label: "User Satisfaction Rate" },
     ];
 
     return (
@@ -22,13 +22,13 @@ const ExperienceSection: React.FC = () => {
             {/* Content */}
             <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
                 {/* Heading */}
-                <span className="text-primary font-medium">Our Experience</span>
+                <span className="text-primary font-medium">Our Platform</span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mt-2 mb-4 leading-snug">
-                    We Are Experienced Since 1992 Until Now
+                    Modern MERN Stack Ride-Sharing Platform
                     <span className="text-primary">.</span>
                 </h2>
                 <p className="text-gray-200 max-w-2xl mx-auto mb-8 sm:mb-12 md:mb-20 text-xs sm:text-sm md:text-base px-2">
-                    With decades of trusted service since 1992, RideMate continues to deliver safe, reliable, and quality rides worldwide.
+                    Built with cutting-edge technology—React, Node.js, Express, MongoDB, and TypeScript—RideMate delivers real-time tracking, secure payments, and role-based features for an exceptional ride-sharing experience.
                 </p>
             </div>
 

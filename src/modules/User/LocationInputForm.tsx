@@ -135,6 +135,7 @@ const LocationInput: React.FC<LocationInputProps> = ({
           value={query}
           onChange={handleChange}
           className={`w-full transition-all duration-200 border-gray-200 dark:border-gray-800 focus:ring-2 focus:ring-primary/20 ${icon ? "pl-10" : "pl-3"
+            } ${label === "Pickup Location" ? "pr-20" : "pr-3"
             }`}
           placeholder={`Enter ${label}`}
         />
@@ -145,7 +146,7 @@ const LocationInput: React.FC<LocationInputProps> = ({
             type="button"
             onClick={getCurrentLocation}
             disabled={isLoadingLocation}
-            className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 text-xs font-medium text-primary hover:text-primary/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-l border-gray-200 dark:border-gray-700 pl-3"
+            className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 text-xs font-medium text-primary hover:text-primary/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors border-l border-gray-200 dark:border-gray-700 pl-1"
           >
             {isLoadingLocation ? (
               <span className="flex items-center gap-1">

@@ -104,33 +104,33 @@ const BlogCard: React.FC<BlogCardProps> = ({
 // Blog data array
 const blogPosts = [
   {
-    title: "A Variety Of Safe Taxi Services On Your Way",
+    title: "Real-Time Ride Tracking: Stay Connected Every Mile",
     description:
-      "RideMate made my trip stress-free, with a professional driver and smooth, comfortable ride experience throughout. Discover how our commitment to safety makes every journey memorable.",
+      "Discover how RideMate's live GPS tracking keeps you informed throughout your journey. Track your driver's location, view estimated arrival times, and share your ride status with loved ones for complete peace of mind.",
     image:
       "https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/taxi-sign.webp",
-    tag: "Booking",
-    date: "Jan 15, 2026",
+    tag: "Technology",
+    date: "Feb 8, 2026",
     readTime: "5 min read",
   },
   {
-    title: "How To Get Discount With Your Mobile App",
+    title: "Emergency SOS: Your Safety Companion on Every Ride",
     description:
-      "Booking is simple, the cab arrived quickly, and the service felt safe, reliable, and affordable. Learn the best tips and tricks to save money on every ride you take.",
+      "Learn how RideMate's integrated SOS feature provides instant access to emergency services, automatic location sharing with your trusted contacts, and direct police contact during rides. Safety is our top priority.",
     image:
       "https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/taxi-african-woman-using-phone-on-back-seat.webp",
-    tag: "Discount",
-    date: "Jan 12, 2026",
+    tag: "Safety",
+    date: "Feb 5, 2026",
     readTime: "4 min read",
   },
   {
-    title: "10 Tips to Catch a Car or Bike in Your City Easily",
+    title: "Seamless Payments: All Methods Welcome with SSLCOMMERZ",
     description:
-      "You love how convenient RideMate is—fast rides, friendly drivers, and excellent support every single time. Master the art of finding rides quickly with these proven strategies.",
+      "From cash to digital wallets, RideMate supports every payment method. Explore how our SSLCOMMERZ integration ensures secure transactions with dynamic fare calculation based on real-time traffic and distance.",
     image:
       "https://fse.jegtheme.com/taxico/wp-content/uploads/sites/38/2025/01/calling-a-taxi-with-phone.webp",
-    tag: "Services",
-    date: "Jan 10, 2026",
+    tag: "Payment",
+    date: "Feb 2, 2026",
     readTime: "6 min read",
   },
 ];
