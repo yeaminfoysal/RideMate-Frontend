@@ -115,7 +115,7 @@ const RideMap: React.FC<RouteProps> = ({ pickup, destination }) => {
     : [23.8103, 90.4125];
 
   return (
-    <div className="w-full h-[500px] rounded-lg overflow-hidden border">
+    <div className="w-full h-[500px] rounded-lg overflow-hidden border relative z-0">
       <MapContainer
         center={center}
         zoom={12}

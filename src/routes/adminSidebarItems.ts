@@ -3,6 +3,7 @@ import DriverManagement from "@/pages/Admin/DriverManagement";
 import RideOversight from "@/pages/Admin/RideOversight";
 import UserManagement from "@/pages/Admin/UserManagement";
 import ProfileManagement from "@/pages/User/ProfileManagement";
+import { Users, UserCog, MapPin, BarChart3, UserCircle } from "lucide-react";
 
 
 export const adminSidebarItems = [
@@ -13,27 +14,32 @@ export const adminSidebarItems = [
             {
                 title: "User Managemment",
                 url: "/admin/user-management",
-                component: UserManagement
+                component: UserManagement,
+                icon: Users
             },
             {
                 title: "Driver Managemment",
                 url: "/admin/driver-management",
-                component: DriverManagement
+                component: DriverManagement,
+                icon: UserCog
             },
             {
                 title: "Ride Oversight",
                 url: "/admin/ride-oversight",
-                component: RideOversight
+                component: RideOversight,
+                icon: MapPin
             },
             {
                 title: "Analytics",
                 url: "/admin/analytics",
-                component: Analytics
+                component: Analytics,
+                icon: BarChart3
             },
             {
                 title: "Profile Managemment",
                 url: "/admin/profile",
-                component: ProfileManagement
+                component: ProfileManagement,
+                icon: UserCircle
             }
         ],
     },
