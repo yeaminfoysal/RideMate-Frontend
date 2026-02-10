@@ -68,7 +68,7 @@ const CustomerReviews: React.FC = () => {
         </div>
 
         {/* Heading */}
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 leading-tight">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 leading-tight">
           Our Customer{" "}
           <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text text-transparent">
             Reviews.

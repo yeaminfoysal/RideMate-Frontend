@@ -44,7 +44,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
         {/* Tag Badge */}
         <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
-          <div className="flex items-center gap-1.5 sm:gap-2 bg-primary text-black px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg font-semibold text-[10px] sm:text-xs shadow-lg backdrop-blur-sm">
+          <div className="flex items-center gap-1.5 sm:gap-2 bg-primary text-black px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg font-semibold text-xs shadow-lg backdrop-blur-sm">
             <Tag className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
             {tag}
           </div>
@@ -61,7 +61,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
       {/* Content */}
       <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
         {/* Meta Info */}
-        <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-xs text-muted-foreground">
+        <div className="flex items-center gap-3 sm:gap-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-1 sm:gap-1.5">
             <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             <span>{date}</span>
@@ -78,7 +78,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
         </h3>
 
         {/* Description */}
-        <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-3">
+        <p className=" text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-3">
           {description}
         </p>
 
@@ -145,9 +145,9 @@ const BlogSection: React.FC = () => {
             <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse" />
             Our News
           </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
             Blog &{" "}
-            <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text text-transparent">
+            <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text">
               Articles.
             </span>
           </h2>

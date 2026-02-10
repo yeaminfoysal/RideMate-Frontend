@@ -67,7 +67,7 @@ export default function WeOfferCard({
                         <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1.5 sm:mb-2 group-hover:tracking-wide transition-all duration-300">
                             {title}
                         </h3>
-                        <p className="text-[10px] sm:text-xs md:text-sm opacity-90 leading-relaxed">
+                        <p className="text-xs md:text-sm opacity-90 leading-relaxed">
                             {desc}
                         </p>
                     </div>
@@ -92,7 +92,7 @@ export default function WeOfferCard({
                                 />
                             </div>
                             {icon1Text && (
-                                <p className="text-[9px] sm:text-[10px] md:text-xs font-semibold">
+                                <p className="text-xs font-semibold">
                                     {icon1Text}
                                 </p>
                             )}
@@ -110,7 +110,7 @@ export default function WeOfferCard({
                                 />
                             </div>
                             {icon2Text && (
-                                <p className="text-[9px] sm:text-[10px] md:text-xs font-semibold">
+                                <p className="text-xs font-semibold">
                                     {icon2Text}
                                 </p>
                             )}

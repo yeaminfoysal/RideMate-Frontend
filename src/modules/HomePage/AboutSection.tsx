@@ -86,9 +86,9 @@ export default function AboutSection() {
               About RideMate
             </div>
 
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
               Trusted Cab Services In All Over The{" "}
-              <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text text-transparent">
+              <span className="text-primary bg-gradient-to-r from-primary to-yellow-500 bg-clip-text">
                 World.
               </span>
             </h2>
@@ -138,7 +138,7 @@ export default function AboutSection() {
                   <h3 className="text-sm sm:text-base md:text-lg font-bold mb-0.5 group-hover/item:text-primary transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground text-[10px] sm:text-xs md:text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

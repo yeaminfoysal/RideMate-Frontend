@@ -91,7 +91,7 @@ export default function DownloadApp() {
                     </div>
 
                     {/* Heading */}
-                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
                         Download RideMate App <br />
                         From Your Gadget
                         <span className="text-primary">.</span>

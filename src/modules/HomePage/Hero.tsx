@@ -47,19 +47,19 @@ const Hero1 = () => {
         <section className="relative py-28 sm:py-28 md:py-28 lg:py-28 xl:py-36 overflow-hidden">
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-primary/30 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-yellow-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
                 <div className="absolute top-1/2 left-1/4 sm:left-1/3 w-48 h-48 sm:w-64 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
             </div>
 
             {/* Decorative Grid */}
-            <div className="absolute inset-0 opacity-[0.03]">
+            <div className="absolute inset-0 opacity-[0.08]">
                 <div
                     className="absolute inset-0"
                     style={{
                         backgroundImage: `linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
                                         linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)`,
-                        backgroundSize: "30px 30px sm:40px 40px md:50px 50px",
+                        backgroundSize: "50px 50px",
                     }}
                 ></div>
             </div>
@@ -82,7 +82,7 @@ const Hero1 = () => {
                         )}
 
                         {/* Heading */}
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
+                        <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
                             RideMate –
                             <span className="bg-gradient-to-r from-primary via-yellow-400 to-primary bg-clip-text text-transparent animate-gradient">
                                 Your Smart Ride
@@ -91,7 +91,7 @@ const Hero1 = () => {
                         </h1>
 
                         {/* Description */}
-                        <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+                        <p className="text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
                             {props.description}
                         </p>
 
@@ -174,11 +174,13 @@ const Hero1 = () => {
                         </div>
 
                         {/* Main Image */}
-                        <div className="relative z-10">
+                        <div className=" mx-auto relative md:mt-14 lg:mt-0">
+                            <div className="guten-2AM08B md:w-[350px] md:h-[350px] xl:w-[400px] lg:h-[400px] ">
+                            </div>
                             <img
                                 src={hero1}
-                                alt="RideMate App Preview"
-                                className="max-h-[280px] sm:max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[500px] w-auto rounded-xl sm:rounded-2xl animate-[float_3s_ease-in-out_infinite] hover:scale-105 transition-transform duration-700"
+                                alt={"Hero 1"}
+                                className="max-h-[405px] md:max-h-[455px] lg:max-h-[505px] rounded-md  relative  animate-[float_3s_ease-in-out_infinite]"
                             />
                         </div>
 
