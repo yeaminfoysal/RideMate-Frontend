@@ -45,48 +45,101 @@ export function ContactSection() {
     }
 
     return (
-        <section className="py-12 sm:py-16 md:py-20">
-            <div className="px-4 sm:px-6 container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
+        <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
+            {/* Animated Background Elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Gradient Orbs */}
+                <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-500/5 rounded-full blur-[150px] animate-pulse" style={{ animationDelay: "1s" }} />
+
+                {/* Floating Particles */}
+                <div className="absolute top-32 left-[15%] w-2 h-2 bg-primary/30 rounded-full animate-float" style={{ animationDelay: "0s" }} />
+                <div className="absolute top-48 right-[20%] w-3 h-3 bg-yellow-500/20 rounded-full animate-float" style={{ animationDelay: "1.5s" }} />
+                <div className="absolute bottom-40 left-[25%] w-2 h-2 bg-primary/40 rounded-full animate-float" style={{ animationDelay: "2.5s" }} />
+                <div className="absolute bottom-56 right-[30%] w-3 h-3 bg-yellow-400/30 rounded-full animate-float" style={{ animationDelay: "1s" }} />
+            </div>
+
+            <div className="px-4 sm:px-6 container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-16 items-start relative z-10">
                 {/* Left Info */}
-                <div className="space-y-4 sm:space-y-6">
-                    <h2 className="text-3xl sm:text-4xl md:text-[50px] font-semibold">
-                        Get in <span className="text-primary">Touch.</span>
+                <div className="space-y-6 sm:space-y-8 animate-fade-in">
+                    {/* Enhanced Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        <span className="text-primary text-sm font-bold tracking-wide uppercase">Contact Us</span>
+                        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: "0.5s" }} />
+                    </div>
+
+                    {/* Gradient Title */}
+                    <h2 className="text-3xl sm:text-4xl md:text-[50px] font-black leading-tight">
+                        <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent inline-block">
+                            Get in Touch
+                        </span>
+                        <span className="text-primary">.</span>
                     </h2>
-                    <p className="text-sm sm:text-base text-muted-foreground">
-                        We’re here to help! Reach out with any questions, feedback, or support requests, and we’ll respond promptly.
+
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        We're here to help! Reach out with any questions, feedback, or support requests, and we'll respond promptly.
                     </p>
 
-                    <div className="space-y-4 sm:space-y-6 md:space-y-8">
-                        <div className="flex items-center gap-3 sm:gap-4">
-                            <div className="p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl bg-foreground text-primary flex-shrink-0">
-                                <MapPin className="w-6 h-6 sm:w-7 sm:h-7 md:w-[34px] md:h-[34px]" />
+                    {/* Decorative Line */}
+                    <div className="relative w-24 h-1">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500 to-transparent rounded-full blur-sm animate-pulse" />
+                    </div>
+
+                    {/* Enhanced Contact Cards */}
+                    <div className="space-y-5 sm:space-y-6">
+                        {/* Location Card */}
+                        <div className="group relative flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br from-background via-background to-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-lg overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-foreground/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="relative p-4 md:p-5 rounded-xl bg-foreground text-primary group-hover:scale-110 transition-transform duration-300">
+                                    <MapPin className="w-6 h-6 sm:w-7 sm:h-7 md:w-[34px] md:h-[34px]" />
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Location</h3>
+
+                            <div className="relative">
+                                <h3 className="font-bold text-sm sm:text-base mb-1 group-hover:text-primary transition-colors duration-300">Location</h3>
                                 <p className="text-xs sm:text-sm text-muted-foreground">
                                     Jl. Merdeka Raya No.73B, Kuta, Badung, Bali
                                 </p>
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-3 sm:gap-4">
-                            <div className="p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl bg-primary text-black flex-shrink-0">
-                                <Phone className="w-6 h-6 sm:w-7 sm:h-7 md:w-[35px] md:h-[35px]" />
+                        {/* Phone Card */}
+                        <div className="group relative flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br from-background via-background to-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-lg overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-primary/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="relative p-4 md:p-5 rounded-xl bg-primary text-black group-hover:scale-110 transition-transform duration-300">
+                                    <Phone className="w-6 h-6 sm:w-7 sm:h-7 md:w-[35px] md:h-[35px]" />
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Phone</h3>
+
+                            <div className="relative">
+                                <h3 className="font-bold text-sm sm:text-base mb-1 group-hover:text-primary transition-colors duration-300">Phone</h3>
                                 <p className="text-xs sm:text-sm text-muted-foreground">
                                     (+62) 8896-2220 | (021) 111 444 90
                                 </p>
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-3 sm:gap-4">
-                            <div className="p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl bg-background shadow text-primary flex-shrink-0">
-                                <Mail className="w-6 h-6 sm:w-7 sm:h-7 md:w-[35px] md:h-[35px]" />
+                        {/* Email Card */}
+                        <div className="group relative flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br from-background via-background to-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-lg overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-primary/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="relative p-4 md:p-5 rounded-xl bg-background shadow-lg border border-primary/20 text-primary group-hover:scale-110 transition-transform duration-300">
+                                    <Mail className="w-6 h-6 sm:w-7 sm:h-7 md:w-[35px] md:h-[35px]" />
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Email</h3>
+
+                            <div className="relative">
+                                <h3 className="font-bold text-sm sm:text-base mb-1 group-hover:text-primary transition-colors duration-300">Email</h3>
                                 <p className="text-xs sm:text-sm text-muted-foreground">
                                     support@domain.com | admin@domain.com
                                 </p>
@@ -94,39 +147,51 @@ export function ContactSection() {
                         </div>
                     </div>
 
-                    {/* Socials */}
-                    <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
-                        <h3 className="font-semibold text-sm sm:text-base">Social Media:</h3>
-                        <div className="flex gap-2 sm:gap-3">
-                            <Button size="icon" className="bg-primary hover:bg-yellow-600 rounded-md w-8 h-8 sm:w-10 sm:h-10">
+                    {/* Enhanced Socials */}
+                    <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                        <h3 className="font-bold text-sm sm:text-base">Social Media:</h3>
+                        <div className="flex gap-3">
+                            <Button size="icon" className="bg-primary hover:bg-yellow-600 rounded-lg w-10 h-10 hover:scale-110 transition-transform duration-300">
                                 f
                             </Button>
-                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-background rounded-md w-8 h-8 sm:w-10 sm:h-10">
+                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-background rounded-lg w-10 h-10 hover:scale-110 transition-transform duration-300">
                                 x
                             </Button>
-                            <Button size="icon" className="bg-primary hover:bg-yellow-600 text-background rounded-md w-8 h-8 sm:w-10 sm:h-10">
+                            <Button size="icon" className="bg-primary hover:bg-yellow-600 text-background rounded-lg w-10 h-10 hover:scale-110 transition-transform duration-300">
                                 w
                             </Button>
-                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-background rounded-md w-8 h-8 sm:w-10 sm:h-10">
+                            <Button size="icon" className="bg-foreground hover:bg-gray-800 text-background rounded-lg w-10 h-10 hover:scale-110 transition-transform duration-300">
                                 in
                             </Button>
                         </div>
                     </div>
                 </div>
 
-                {/* Right Form */}
-                <div className="bg-background shadow-xl rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12">
+                {/* Enhanced Right Form */}
+                <div className="group relative bg-background shadow-2xl rounded-2xl p-6 sm:p-8 md:p-10 border border-primary/10 hover:border-primary/30 transition-all duration-500 overflow-hidden animate-fade-in" style={{ animationDelay: "100ms" }}>
+                    {/* Glowing Border Effect */}
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary via-yellow-500 to-primary opacity-10 blur-md animate-gradient-xy" />
+                    </div>
+
+                    {/* Background Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6 md:space-y-8">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="relative space-y-5 sm:space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <FormField
                                     control={form.control}
                                     name="name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-sm sm:text-base">Name</FormLabel>
+                                            <FormLabel className="text-sm sm:text-base font-semibold">Name</FormLabel>
                                             <FormControl>
-                                                <Input className="h-12 sm:h-14 md:h-16 text-sm sm:text-base" placeholder="Your Name" {...field} />
+                                                <Input
+                                                    className="h-12 sm:h-14 text-sm sm:text-base border-2 border-primary/10 focus:border-primary/30 transition-colors duration-300"
+                                                    placeholder="Your Name"
+                                                    {...field}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -137,9 +202,13 @@ export function ContactSection() {
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-sm sm:text-base">Email</FormLabel>
+                                            <FormLabel className="text-sm sm:text-base font-semibold">Email</FormLabel>
                                             <FormControl>
-                                                <Input className="h-12 sm:h-14 md:h-16 text-sm sm:text-base" placeholder="Your Email" {...field} />
+                                                <Input
+                                                    className="h-12 sm:h-14 text-sm sm:text-base border-2 border-primary/10 focus:border-primary/30 transition-colors duration-300"
+                                                    placeholder="Your Email"
+                                                    {...field}
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -152,9 +221,13 @@ export function ContactSection() {
                                 name="subject"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-sm sm:text-base">Subject</FormLabel>
+                                        <FormLabel className="text-sm sm:text-base font-semibold">Subject</FormLabel>
                                         <FormControl>
-                                            <Input className="h-12 sm:h-14 md:h-16 text-sm sm:text-base" placeholder="Subject" {...field} />
+                                            <Input
+                                                className="h-12 sm:h-14 text-sm sm:text-base border-2 border-primary/10 focus:border-primary/30 transition-colors duration-300"
+                                                placeholder="Subject"
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -166,22 +239,33 @@ export function ContactSection() {
                                 name="message"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-sm sm:text-base">Message</FormLabel>
+                                        <FormLabel className="text-sm sm:text-base font-semibold">Message</FormLabel>
                                         <FormControl>
-                                            <Textarea className="h-24 sm:h-28 md:h-30 text-sm sm:text-base" rows={5} placeholder="Message" {...field} />
+                                            <Textarea
+                                                className="min-h-[120px] text-sm sm:text-base border-2 border-primary/10 focus:border-primary/30 transition-colors duration-300"
+                                                placeholder="Your message..."
+                                                {...field}
+                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
 
-                            <Button type="submit" className="w-full bg-primary text-foreground text-sm sm:text-base py-3 sm:py-4 md:py-5">
-                                Send Message
+                            <Button
+                                type="submit"
+                                className="relative w-full bg-primary hover:bg-yellow-600 text-foreground text-sm sm:text-base py-6 font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group/btn"
+                            >
+                                <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                                <span className="relative">Send Message</span>
                             </Button>
                         </form>
                     </Form>
                 </div>
             </div>
+
+            {/* Bottom Accent */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
         </section>
     );
 }
